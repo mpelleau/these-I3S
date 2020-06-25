@@ -1,0 +1,26 @@
+
+\AtBeginDocument{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Environnement pour les théorèmes, définitions, exemples et autre   %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\theoremstyle{plain}
+	\newtheorem{theorem}{Théorème}[section]
+	\newtheorem{lemma}[theorem]{Lemme}
+	\newtheorem{proposition}[theorem]{Proposition}
+	\newtheorem{corollary}[theorem]{Corollaire}
+	\newtheorem{preuve}{Preuve}[chapter]
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}{Définition}[section]
+	
+	\newtheoremstyle{note}{}{}{}{}{\itshape}{~--~}{ }{\thmname{#1}\thmnumber{ #2}}
+	\theoremstyle{note}
+	\newtheorem{example}{Exemple}[section]
+	\newtheorem{remark}{Remarque}[section]
+	
+	\renewenvironment{proof}[1][Démonstration]{\noindent\textit{#1}.\nopagebreak\begin{list}{}{\setlength\leftmargin{10pt}}\item}{\end{list}$\square$\medskip}
+	\newenvironment{myproof}[1][Démonstration]{\noindent\textit{#1}.\nopagebreak\begin{list}{}{\setlength\leftmargin{10pt}}\item}{\hfill$\diamond$\end{list}\smallskip}
+}
+
+	

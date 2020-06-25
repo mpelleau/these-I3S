@@ -1,0 +1,36 @@
+
+\usepackage{thmtools}
+
+\newif\ifusethmname
+
+\makeatletter
+
+\renewcommand\thmt@mklistcmd{
+  \@xa\protected@edef\csname l@\thmt@envname\endcsname{
+    \@nx\@dottedtocline{1}{1.5em}{\@nx\thmt@listnumwidth}
+  }
+  \ifthmt@isstarred
+    \@xa\def\csname ll@\thmt@envname\endcsname{
+      \protect\numberline{\protect\let\protect\autodot\protect\@empty}
+      \ifusethmname
+      \thmt@thmname
+      \fi
+      \ifx\@empty\thmt@shortoptarg\else\protect\thmtformatoptarg{\thmt@shortoptarg}\fi
+    }
+  \else
+    \@xa\def\csname ll@\thmt@envname\endcsname{
+      \protect\numberline{\csname the\thmt@envname\endcsname}
+      \ifusethmname
+      \thmt@thmname
+      \fi
+      \ifx\@empty\thmt@shortoptarg\else\protect\thmtformatoptarg{\thmt@shortoptarg}\fi
+    }
+  \fi
+  \@xa\gdef\csname thmt@contentsline@\thmt@envname\endcsname{
+    \thmt@contentslineShow% default:show
+  }
+}
+\makeatother
+
+
+\renewcommand{\thmtformatoptarg}[1]{#1}%

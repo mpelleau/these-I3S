@@ -52,7 +52,6 @@
 \RequirePackage{lmodern}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{amsthm}
 \RequirePackage{times}
 \RequirePackage{fancyvrb}
 \RequirePackage{fancybox}
@@ -264,75 +263,6 @@
 \def\cleardoublepage{\clearpage\thispagestyle{empty}%
 	\if@twoside \ifodd\c@page\else
 	\hbox{}\newpage\thispagestyle{empty}\if@twocolumn\hbox{}\newpage\fi\fi\fi}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Françisation							%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\AtBeginDocument{
-	\renewcommand\contentsname{Table des matières}
-	\renewcommand\listfigurename{Liste des figures}
-	\renewcommand\listtablename{Liste des tableaux}
-	\newcommand\listexamplesname{Liste des exemples}
-	\renewcommand\bibname{Bibliographie}
-	\renewcommand\defaultindexname{Index alphabétique}
-	\renewcommand\glossaryname{Nomenclature}
-	\renewcommand\figurename{Figure}
-	\renewcommand\tablename{Table}
-	\renewcommand\partname{}
-	\renewcommand\chaptername{Chapitre}
-	\renewcommand\appendixname{Annexes}
-	\renewcommand\abstractname{Abstract}
-	\newcommand\resumename{Résumé}
-	\newcommand\sommairename{Sommaire}
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Environnement Algorithm						%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\floatname{algorithm}{Algorithme}
-	\renewcommand{\listalgorithmname}{Listes des algorithmes}
-	\renewcommand{\algorithmiccomment}[1]{\hfill{\small\textit{\textcolor{blue}{/* #1 */}}}}
-	\renewcommand{\algorithmicend}{\textbf{fin}}
-	\renewcommand{\algorithmicif}{\textbf{si}}
-	\renewcommand{\algorithmicthen}{\textbf{alors}}
-	\renewcommand{\algorithmicelse}{\textbf{sinon}}
-	\renewcommand{\algorithmicfor}{\textbf{pour}}
-	\renewcommand{\algorithmicforall}{\textbf{pour chaque}}
-	\renewcommand{\algorithmicdo}{\textbf{faire}}
-	\renewcommand{\algorithmicwhile}{\textbf{tant que}}
-	\renewcommand{\algorithmicloop}{\textbf{boucle}}
-	\renewcommand{\algorithmicrepeat}{\textbf{répéter}}
-	\renewcommand{\algorithmicuntil}{\textbf{jusqu'\`a}}
-	\renewcommand{\algorithmicor}{\textbf{ou}}
-	\renewcommand{\algorithmicand}{\textbf{et}}
-	\renewcommand{\algorithmicreturn}{\textbf{retourner}}
-	\renewcommand{\algorithmicto}{\textbf{\`a}}
-	
-	\newcommand{\FROM}{\textbf{de}}
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Environnement pour les théorèmes, définitions, exemples et autre   %
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	\theoremstyle{plain}
-	\newtheorem{theorem}{Théorème}[section]
-	\newtheorem{lemma}[theorem]{Lemme}
-	\newtheorem{proposition}[theorem]{Proposition}
-	\newtheorem{corollary}[theorem]{Corollaire}
-	
-	\theoremstyle{definition}
-	\newtheorem{definition}{Définition}[section]
-	
-	\newtheoremstyle{note}{}{}{}{}{\itshape}{~--~}{ }{\thmname{#1}\thmnumber{ #2}}%\thmnote{ : #3}}
-	\theoremstyle{note}
-	\newtheorem{example}{Exemple}[section]
-	\newtheorem{remark}{Remarque}[section]
-	
-	\renewenvironment{proof}[1][Démonstration]{\noindent\textit{#1}.\nopagebreak\begin{list}{}{\setlength\leftmargin{10pt}}\item}{\end{list}$\square$\medskip}
-	\newenvironment{myproof}[1][Démonstration]{\noindent\textit{#1}.\nopagebreak\begin{list}{}{\setlength\leftmargin{10pt}}\item}{\hfill$\diamond$\end{list}\smallskip}
-	
-	
-}
 
 % fichier de labels.
 \newwrite\@lblout
@@ -564,17 +494,25 @@
 				\textit{\@title}
 				\if@subtitle{\\[.3cm]\large\bfseries\itshape} \par
 				\vspace{1.5cm}
-				%      \begin{tabular}[t]{c}%
 				\@firstname\ \IFmiddlename \@lastname
-				%      \end{tabular}
-				\par%
+				\par
 				\vspace*{1cm}
 				{\Huge $\triangleright$\hspace{-3pt}$\triangleleft$}\par
-				\vspace*{2.5cm}
-				
-				%\includegraphics[width=\@blason@width]{\@blason@name}
-				\vspace*{2.5cm}
-				\par
+			\end{center}
+			\vspace*{2.cm}
+			{\Large\bf Jury :}\\[0.5cm]
+			{\large
+			{\bf \presidentname\xspace du jury}\\[0.1cm]
+			\@president, \@presidentAdr\\[0.3cm]
+			{\bf \rapporteursname}\\[0.1cm]
+			\@rappoteurs\\[-0.2cm]
+			{\bf \examinateursname}\\[0.1cm]
+			\@examinateurs\\[-0.2cm]
+			{\bf \invitesname}\\[0.1cm]
+			\@invites
+			}
+			\vspace*{2.cm}
+			\begin{center}
 				\makebox[5cm]{\hrulefill}\par
 				Université Côte d'Azur
 			\end{center}
@@ -615,7 +553,6 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
 		\newpage
-		%  \hoffset=0\p@%
 		\setcounter{footnote}{0}%
 		\global\let\thanks\relax
 		\global\let\maketitle\relax
@@ -1650,6 +1587,9 @@
 			\def\@coFinanceursLogo{\@empty}
 			\def\@president{\@empty}
 			\gdef\@presidentAdr{\@empty}
+			\gdef\@rappoteurs{}
+			\gdef\@examinateurs{}
+			\gdef\@invites{}
 			\def\creerPresident #1/#2+{\gdef\@president{#1}\gdef\@presidentAdr{#2}}
 			\newcommand{\rapporteursname}{Rapporteurs}
 			\newcommand{\presidentname}{Président}
@@ -1670,12 +1610,15 @@
 				\global\@juryPresenttrue%
 				\def\rapporteur##1##2##3{\stepcounter{nbRapporteurs}
 					##1, ##2, ##3 \\
+					\g@addto@macro\@rappoteurs{##1, ##2, ##3 \\}
 				}
 				\def\examinateur##1##2##3{\stepcounter{nbExaminateurs}
 					##1, ##2, ##3 \\
+					\g@addto@macro\@examinateurs{##1, ##2, ##3 \\}
 				}
 				\def\invite##1##2##3{\stepcounter{nbInvites}
 					##1, ##2, ##3 \\
+					\g@addto@macro\@invites{##1, ##2, ##3 \\}
 				}
 				\begin{lrbox}{\@juryBoxA}
 					\begin{tabular}{p{0.45\linewidth}}
@@ -1759,12 +1702,16 @@
 					\enlargethispage{2cm}
 					\vspace*{-2.5cm}
 				}{
+				\begin{center}\Large\bf \@titre\end{center}
+				
 				\noindent\unvcopy\fourth@coverGlobB
 				\ifx\@motscles\@empty\else
 				\smallskip
 				\noindent\textbf{Mots-clés :} \@motscles
 				\fi
 				\vspace{1cm}
+				\begin{center}\Large\bf \@title\end{center}
+				\smallskip
 				\noindent\unvcopy\fourth@coverGlobA
 				\ifx\@keywords\@empty\else
 				\smallskip
@@ -1864,7 +1811,6 @@
 }
 \newenvironment{itemlex}{\begin{itemize:lex}}{\end{itemize:lex}}
 
-\newtheorem{preuve}{Preuve}[chapter]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2018,7 +1964,8 @@
 				
 				\def\@titre{\ClassError{these-ISSS}{Il manque le titre en français}{
 						Utilisez la macro \noexpand\titre}}
-				\def\@title{}
+				\def\@title{\ClassError{these-ISSS}{Il manque le titre en anglais}{
+						Utilisez la macro \noexpand\title}}
 				\def\@soustitre{.}
 				\def\@subtitle{.}
 				\def\titre#1{\gdef\@titre{#1}}
@@ -2118,3 +2065,4 @@
 						%% Local Variables:
 						%% mode:latex
 						%% End:
+						

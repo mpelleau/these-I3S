@@ -8,6 +8,7 @@
 *.log
 *.maf
 *.mlf*
+*.mlt*
 *.mtc*
 *.synctex.gz
 *.toc
