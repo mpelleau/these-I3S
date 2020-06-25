@@ -4,4 +4,4 @@ Vous trouverez ici un modèle de thèse en latex avec pour [couverture celle dem
 
 La macro `\hdr` permet de spécifier que le document est pour une habilitation à diriger les recherches. 
 
-N'hésitez pas à poster de issues ou faire des pull-request pour améliorer ce modèle.
+N'hésitez pas à poster des issues ou faire des pull-request pour améliorer ce modèle.
