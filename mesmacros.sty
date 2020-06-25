@@ -1,0 +1,136 @@
+\usepackage{footnote}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pst-plot,pst-node,multido}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage{tipa}
+\usepackage{calc}
+\usepackage{colortbl}
+\usepackage[hyphens]{url}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.text}
+\usepackage{xspace}
+\usepackage[french,draft]{varioref}
+
+\usepackage{galois}
+\usepackage{setspace}
+
+\usepackage[plain, chapter]{algorithm}
+\usepackage{algorithmic}
+\usepackage{subfigure}
+\usepackage{stmaryrd}
+
+\usepackage{pgf}
+
+\usepackage{thmtools}
+
+\newif\ifusethmname
+
+\makeatletter
+
+\renewcommand\thmt@mklistcmd{
+  \@xa\protected@edef\csname l@\thmt@envname\endcsname{
+    \@nx\@dottedtocline{1}{1.5em}{\@nx\thmt@listnumwidth}
+  }
+  \ifthmt@isstarred
+    \@xa\def\csname ll@\thmt@envname\endcsname{
+      \protect\numberline{\protect\let\protect\autodot\protect\@empty}
+      \ifusethmname
+      \thmt@thmname
+      \fi
+      \ifx\@empty\thmt@shortoptarg\else\protect\thmtformatoptarg{\thmt@shortoptarg}\fi
+    }
+  \else
+    \@xa\def\csname ll@\thmt@envname\endcsname{
+      \protect\numberline{\csname the\thmt@envname\endcsname}
+      \ifusethmname
+      \thmt@thmname
+      \fi
+      \ifx\@empty\thmt@shortoptarg\else\protect\thmtformatoptarg{\thmt@shortoptarg}\fi
+    }
+  \fi
+  \@xa\gdef\csname thmt@contentsline@\thmt@envname\endcsname{
+    \thmt@contentslineShow% default:show
+  }
+}
+\makeatother
+
+
+\renewcommand{\thmtformatoptarg}[1]{#1}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros customis\'ees  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{pink}{rgb}{0.8,0,0.4}
+\definecolor{bleu}{rgb}{0,0.6,0.8}
+\definecolor{vert}{rgb}{0,0.4,0.4}
+\definecolor{vertc}{rgb}{0,0.6,0.4}
+\definecolor{vertb}{rgb}{0,0.4,0.4}
+\definecolor{violet}{RGB}{76,95,165}%4B5FA5
+
+\newcommand{\eg}{\textit{e.g.,\xspace}}
+\newcommand{\wrt}{w.r.t.\xspace}
+
+\newcommand{\ssi}{si et seulement si\xspace}
+
+\def\mB#1{\ensuremath{\mathbb{#1}}}
+\def\mC#1{\ensuremath{\mathcal{#1}}}
+
+\newcommand{\eme}{\ensuremath{^{\grave{e}me}}}
+\newcommand{\ere}{\ensuremath{^{\acute{e}re}}}
+\newcommand{\er}{\ensuremath{^{er}}}
+
+\def\ojo#1{{\color{pink}#1}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead[LE,RO]{\textbf{\thepage}}
+\fancyhead[LO]{\textsl{\rightmark}}
+\fancyhead[RE]{\textsl{\leftmark}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\hyphenation{qua-li-té}
+%\hyphenation{l'ex-plo-ra-tion}
+%\hyphenation{la-quel-le}
+%\hyphenation{consi-dé-rant}
+%\hyphenation{multi-dimension-nelle}
+%\hyphenation{parti-tionné}
+%\hyphenation{sci-en-ti-fi-que}
+%\hyphenation{inst-an-ces}
+%\hyphenation{inst-an-ce}
+%\hyphenation{ap-pro-xi-ma-tion}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, breaklinks=true, colorlinks=true, citecolor=bleu, linkcolor=pink]{hyperref}
+\usepackage{bookmark}
+
+\usepackage{minitoc}
+\dominitoc[n]
+\dominilof
+\dominilot
+\setcounter{minitocdepth}{3}
+\renewcommand{\mtctitle}{Sommaire}

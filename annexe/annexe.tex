@@ -1,0 +1,172 @@
+% !TEX root = ../sommaire.tex
+
+\chapter*{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Équation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  $$
+  \begin{array}{l c l}
+    Z = \min c\cdotp x & & Z_{LR}(\lambda) = \min c\cdotp x + \lambda^T\cdotp(b_h - A_hx)\\
+    \mbox{s.t. }
+      \left\{
+        \begin{array}{l}
+          A_hx \geq b_h\\
+          A_ex \geq b_e\\
+          x \in \{0, 1\}
+        \end{array}
+      \right.
+    & \longrightarrow
+    & \mbox{s.t. }
+      \left\{
+        \begin{array}{l}
+          A_ex \geq b_e\\
+          x \in \{0, 1\}
+        \end{array}
+      \right.
+  \end{array}
+  $$
+  
+  
+\begin{figure}
+  \caption{Figure vide}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cosinus}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\b#1{\textcolor{bleu}{#1}}
+\def\v#1{\textcolor{violet}{#1}}
+\def\r#1{\textcolor{pink}{#1}}
+\def\o#1{\textcolor{orange}{#1}}
+\def\g#1{\textcolor{vert}{#1}}
+
+\begin{figure}
+  \begin{tikzpicture}
+    \draw[->, black!50] (0, -1.5) -- (0, 1.5);
+    \draw[->, black!50] (-1.5, 0) -- (1.5, 0);
+    \begin{scope}[thick, bleu]
+      \clip (0, 0) rectangle (1.5, 1.5);
+      \draw (0, 0) circle (1);
+      \draw (0.5, 0.5) node {1};
+    \end{scope}
+    \begin{scope}[thick, pink]
+      \clip (0, 0) rectangle (-1.5, 1.5);
+      \draw (0, 0) circle (1);
+      \draw (-0.5, 0.5) node {2};
+    \end{scope}
+    \begin{scope}[thick, violet]
+      \clip (0, 0) rectangle (-1.5, -1.5);
+      \draw (0, 0) circle (1);
+      \draw (-0.5, -0.5) node {3};
+    \end{scope}
+    \begin{scope}[thick, orange]
+      \clip (0, 0) rectangle (1.5, -1.5);
+      \draw (0, 0) circle (1);
+      \draw (0.5, -0.5) node {4};
+    \end{scope}
+  \end{tikzpicture}
+  \begin{tikzpicture}[xscale = 1.25]
+    \draw[->, black!50] (0, -1.5) -- (0, 1.5);
+    \draw[->, black!50] (-0.5, 0) -- (8.5, 0);
+    \draw[dotted] (1, -1.5) -- (1, 1.5);
+    \draw[dotted] (2, -1.5) -- (2, 1.5);
+    \draw[dotted] (3, -1.5) -- (3, 1.5);
+    \draw[dotted] (4, -1.5) -- (4, 1.5);
+    \draw[dotted] (5, -1.5) -- (5, 1.5);
+    \draw[dotted] (6, -1.5) -- (6, 1.5);
+    \draw[dotted] (7, -1.5) -- (7, 1.5);
+    \begin{scope}[thick, bleu]
+      \clip (0, 1.5) rectangle (1, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (0.5, 0) node {1};
+    \end{scope}
+    \begin{scope}[thick, pink]
+      \clip (1, 1.5) rectangle (2, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (1.5, 0) node {2};
+    \end{scope}
+    \begin{scope}[thick, violet]
+      \clip (2, 1.5) rectangle (3, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (2.5, 0) node {3};
+    \end{scope}
+    \begin{scope}[thick, orange]
+      \clip (3, 1.5) rectangle (4, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (3.5, 0) node {4};
+    \end{scope}
+    
+    \begin{scope}[xshift = 4cm]
+    \begin{scope}[thick, bleu]
+      \clip (0, 1.5) rectangle (1, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (0.5, 0) node {1};
+    \end{scope}
+    \begin{scope}[thick, pink]
+      \clip (1, 1.5) rectangle (2, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (1.5, 0) node {2};
+    \end{scope}
+    \begin{scope}[thick, violet]
+      \clip (2, 1.5) rectangle (3, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (2.5, 0) node {3};
+    \end{scope}
+    \begin{scope}[thick, orange]
+      \clip (3, 1.5) rectangle (4, -1.5);
+      \draw (0, 1) cos (1, 0) sin (2, -1) cos (3, 0) sin (4, 1);
+      \draw (3.5, 0) node {4};
+    \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Cosinus}
+\end{figure}
+  
+  
+  $\cos([x^-, x^+]) = [-1, 1]$ si $x^+ - x^- \geq 2\pi$
+  
+  sinon
+  
+  $\begin{array}{c | c | l}
+  x^- \mod 2\pi \in & x^+ \mod 2\pi \in & \cos([x^-, x^+])\\\hline
+  1 & 1 & \left\{\begin{array}{ll}\b{[\cos(x^+), \cos(x^-)]} & \mbox{si } x^- \mod 2\pi \leq x^+ \mod 2\pi\\\o{[-1, 1]} & \mbox{sinon}\end{array}\right.\\
+  1 & 2 & \b{[\cos(x^+), \cos(x^-)]}\\
+  1 & 3 & \r{[-1, \cos(x^-)]}\\
+  1 & 4 & \r{[-1, \max(\cos(x^-), \cos(x^+))]}\\[5pt]
+  
+  2 & 1 & \o{[-1, 1]}\\
+  2 & 2 & \left\{\begin{array}{ll}\b{[\cos(x^+), \cos(x^-)]} & \mbox{si } x^- \mod 2\pi \leq x^+ \mod 2\pi\\\o{[-1, 1]} & \mbox{sinon}\end{array}\right.\\
+  2 & 3 & \r{[-1, \max(\cos(x^-), \cos(x^+))]}\\
+  2 & 4 & \r{[-1, \cos(x^+)]}\\[5pt]
+  
+  3 & 1 & \v{[\cos(x^-), 1]}\\
+  3 & 2 & \v{[\min(\cos(x^-), \cos(x^+)), 1]}\\
+  3 & 3 & \left\{\begin{array}{ll}\g{[\cos(x^-), \cos(x^+)]} & \mbox{si } x^- \mod 2\pi \leq x^+ \mod 2\pi\\\o{[-1, 1]} & \mbox{sinon}\end{array}\right.\\
+  3 & 4 & \g{[\cos(x^-), \cos(x^+)]}\\[5pt]
+  
+  4 & 1 & \v{[\min(\cos(x^-), \cos(x^+)), 1]}\\
+  4 & 2 & \v{[\cos(x^+), 1]}\\
+  4 & 3 & \o{[-1, 1]}\\
+  4 & 4 & \left\{\begin{array}{ll}\g{[\cos(x^-), \cos(x^+)]} & \mbox{si } x^- \mod 2\pi \leq x^+ \mod 2\pi\\\o{[-1, 1]} & \mbox{sinon}\end{array}\right.\\
+  \end{array}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section C}
+
+\begin{definition}[test definition]
+  Ceci est une définition
+\end{definition}
+
+\begin{example}[test exemple]
+  Ceci est un exemple
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

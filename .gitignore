@@ -1,0 +1,13 @@
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.lbl
+*.loe
+*.lof
+*.log
+*.maf
+*.mlf*
+*.mtc*
+*.synctex.gz
+*.toc

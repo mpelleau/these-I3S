@@ -1,0 +1,120 @@
+% !TEX root = ../sommaire.tex
+
+\chapter{Chapitre 5}
+
+\chaptoc
+
+\tikzstyle{nodedefault} = [draw, circle]
+\tikzstyle{edgedefault} = [draw]
+
+\tikzstyle{n1} = [nodedefault]
+\tikzstyle{n2} = [nodedefault]
+\tikzstyle{n3} = [nodedefault]
+\tikzstyle{n4} = [nodedefault]
+\tikzstyle{n5} = [nodedefault]
+\tikzstyle{n6} = [nodedefault]
+\tikzstyle{n7} = [nodedefault]
+\tikzstyle{n8} = [nodedefault]
+\tikzstyle{n9} = [nodedefault]
+
+\tikzstyle{a12} = [edgedefault]
+\tikzstyle{a13} = [edgedefault]
+\tikzstyle{a25} = [edgedefault]
+\tikzstyle{a34} = [edgedefault]
+\tikzstyle{a46} = [edgedefault]
+\tikzstyle{a56} = [edgedefault]
+\tikzstyle{a67} = [edgedefault]
+\tikzstyle{a68} = [edgedefault]
+\tikzstyle{a79} = [edgedefault]
+\tikzstyle{a89} = [edgedefault]
+
+% style pour les noeuds roses
+\tikzstyle{nrose} = [pink]
+
+% style pour les noeuds bleus
+\tikzstyle{nbleu} = [white, fill = bleu]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section 1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}
+  \centering
+    
+  \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}] 
+    \input{chapitre5/graphe}
+  \end{tikzpicture}
+    
+  \caption{Graphe de départ}
+  \label{fig:graphe}
+\end{figure}
+
+La figure \ref{fig:graphe} est vraiment magnifique.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section 2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{figure}
+    \centering
+    
+    \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
+      % redéfinitions des nœuds en rose
+      \tikzset{n1/.style = nrose}
+      \tikzset{n9/.style = nrose}
+      
+      % et en rectangle
+      \tikzset{n2/.style = {rectangle, pink}}
+      
+      % redéfinitions de nœuds bleus
+      \tikzset{n6/.style = nbleu}
+      
+      % redéfinitions des arêtes
+      \tikzset{a12/.style = {->, vert, thick}}
+      \tikzset{a25/.style = {-), vert, thick}}
+      \tikzset{a56/.style = {-], vert, thick}}
+      \tikzset{a67/.style = {(-], vert, thick}}
+      \tikzset{a79/.style = {o-[, vert, thick}}
+      
+      \tikzset{a13/.style = {red, dashed, thick}}
+      
+      \input{chapitre5/graphe}      
+    \end{tikzpicture}
+    
+    \caption{Graphe avec des nœuds en rose et d'autres en bleu}
+  \label{fig:grapherb}
+  \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section 3}
+
+  \begin{figure}
+    \centering
+    
+    \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
+      \input{chapitre5/graphe}
+      
+      \tikzset{every node/.style = {}} % on ne veut plus de cercle autour des nœuds
+      \node[red] () at ($(1) !.5! (2)$) {toto}; % directement au milieu
+      
+      \node[bleu, right] () at ($(4) !.35! (6)$) {tata}; % à droite, à 0.35 de (4)
+      
+      \tikzset{every path/.style = {}} % on ne veut plus dessiner les chemins
+      \path (7) -- (9) node [midway, above, sloped, vert] () {titi};
+      
+      \path (8) -- (9) node [midway, below, sloped, pink] (ici) {ici};
+      
+      \node[right = 0.5cm, pink] (regardez) at (9 |- 8) {Regardez};  % le nœud se trouve à 0.5cm à droite du point ayant la même abscisse que (9) et la même ordonnée que (8);
+      
+      \draw[->, pink, very thick] (regardez) -- (ici);
+
+    \end{tikzpicture}
+    
+    \caption{Graphe de départ avec une étiquette sur certaines arêtes}
+  \label{fig:grapheetiq}
+  \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
