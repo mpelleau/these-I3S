@@ -11,7 +11,7 @@
 \begin{figure}
   \centering
   \subfigure[subfigure 1]{\label{fig:subfig1}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale = 1.5]
       \fill [black] (-1.25, -1.25) rectangle (1.25, 1.25); 
       \begin{scope}
         \clip (-1, -1) rectangle (0, 0);
@@ -31,7 +31,7 @@
       \end{scope}
     \end{tikzpicture}}
   \subfigure[subfigure 2]{\label{fig:subfig2}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale = 1.5]
       \draw[brown] (0, 0) -- (0.5, 0.5) -- (0.5, 1) -- (0.75, 1) -- (0.75, 0.75) -- (1, 1) -- (2, 0) -- cycle;
       \draw[brown] (0, 0) -- (0, -1.5) -- (2, -1.5) --  (2, 0);
       \draw[color = green!60!black, fill = blue, fill opacity = 0.15] (0.25, -0.65) rectangle (0.75, -0.15);
@@ -61,12 +61,77 @@ La figure \ref{fig:figure1} est vraiment magnifique. Elle est composée des sous
       \IF{$m <$ tab[$i$]}
         \STATE $m \leftarrow$ tab[$i$]
       \ENDIF
+      \STATE
+      \STATE \PRINT "Le maximum est " + $m$
+      \RETURN $m$
     \ENDFOR
   \end{algorithmic}
-  \caption[Algorithme 1]{Met dans $m$ la valeur maximale du tableau tab.\label{ag:algo1}}
+  \caption[Algorithme 1 (nom dans la liste des algorithmes)]{Met dans $m$ la valeur maximale du tableau tab.\label{ag:algo1}}
 \end{algorithm}
 
-L'algorithme \ref{ag:algo1} utilise le package algorithmic.
+L'algorithme \ref{ag:algo1} utilise le package \texttt{algorithmic} dont la francisation des termes se trouve dans le fichier \texttt{algo.sty}.
+
+\begin{algorithm}
+  \begin{C}
+int max(int* tab, int n) {
+  int i; // indice de parcours
+  int m; // valeur maximale du tableau
+  
+  m = tab[0];
+  for (i = 1; i < n; i++) {
+    if (m < tab[i]) {
+      m = tab[i];
+    }
+  }
+  
+  printf("Le maximum est %d", m),
+  return m;
+}
+  \end{C}
+  \caption[Algo en C]{Retourne la valeur maximale du tableau tab.\label{ag:algoc}}
+\end{algorithm}
+
+\begin{algorithm}
+  \begin{PseudoCode}
+max(tableau d'entiers tab, entier n) {
+  entier i // indice de parcours
+  entier m // valeur maximale du tableau
+  
+  m <- tab[1]
+  for i from 2 to n {
+    if (m < tab[i]) {
+      m <- tab[i]
+    }
+  }
+  
+  print("Le maximum est ", m),
+  return m;
+}
+  \end{PseudoCode}
+  \caption[Algo en PseudoCode]{Retourne la valeur maximale du tableau tab.\label{ag:algop}}
+\end{algorithm}
+
+\begin{algorithm}
+  \begin{Java}
+int max(int[] tab, int n) {
+  int i; // indice de parcours
+  int m; // valeur maximale du tableau
+  
+  m = tab[0];
+  for (i = 1; i < n; i++) {
+    if (m < tab[i]) {
+      m = tab[i];
+    }
+  }
+  
+  System.out.println("Le maximum est " + m),
+  return m;
+}
+  \end{Java}
+  \caption[Algo en Java]{Retourne la valeur maximale du tableau tab.\label{ag:algoj}}
+\end{algorithm}
+
+Les algorithmes \ref{ag:algoc} en C, \ref{ag:algop} en pseudo code, et \ref{ag:algoj} en Java utilisent le package \texttt{lstlistings}. La coloration sintaxique utilise les couleurs définies dans le fichier \texttt{couleurs.sty} et les mot-clés se trouvent dans le fichier \texttt{colorationSyntaxique.sty}. Vous pouvez modifier le fichier \texttt{colorationSyntaxique.sty} pour ajouter de nouveaux mot-clés ou y ajouter un langage, pour le moment seuls C, Java, Python, Shell, R et un pseudo code sont disponibles.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Section 3}

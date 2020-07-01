@@ -23,16 +23,12 @@
 \usepackage{francisation}
 \usepackage{algo}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Macros customis\'ees  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{couleurs}
+\usepackage{colorationSyntaxique}
 
-\definecolor{pink}{rgb}{0.8,0,0.4}
-\definecolor{bleu}{rgb}{0,0.6,0.8}
-\definecolor{vert}{rgb}{0,0.4,0.4}
-\definecolor{vertc}{rgb}{0,0.6,0.4}
-\definecolor{vertb}{rgb}{0,0.4,0.4}
-\definecolor{violet}{RGB}{76,95,165}%4B5FA5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros customisées  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\eg}{\textit{e.g.,\xspace}}
 \newcommand{\wrt}{w.r.t.\xspace}
@@ -59,27 +55,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\hyphenation{qua-li-té}
-%\hyphenation{l'ex-plo-ra-tion}
-%\hyphenation{la-quel-le}
-%\hyphenation{consi-dé-rant}
-%\hyphenation{multi-dimension-nelle}
-%\hyphenation{parti-tionné}
-%\hyphenation{sci-en-ti-fi-que}
-%\hyphenation{inst-an-ces}
-%\hyphenation{inst-an-ce}
-%\hyphenation{ap-pro-xi-ma-tion}
-
 \widowpenalty=10000
 \clubpenalty=10000
 \raggedbottom
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Coloration des liens
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, breaklinks=true, colorlinks=true, citecolor=bleu, linkcolor=pink]{hyperref}
 \usepackage{bookmark}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tables des matières à chaque chapitre
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{minitoc}
 \dominitoc[n]
 \dominilof
