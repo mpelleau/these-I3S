@@ -4,6 +4,8 @@
 *.blg
 *.lbl
 *.loe
+*.loa
+*.out
 *.lof
 *.log
 *.maf

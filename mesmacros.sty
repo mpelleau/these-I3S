@@ -5,26 +5,44 @@
 \usepackage{calc}
 \usepackage[hyphens]{url}
 
-\usepackage{pgf, tikz}
+\usepackage{pgf, tikz} % Pour de jolis dessins
 \usetikzlibrary{shapes}
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations.text}
 
-\usepackage{xspace}
+\usepackage{xspace} % Pour gérer les espacements
 \usepackage[french,draft]{varioref}
 
 \usepackage{subfigure}
 
-\usepackage{theoremNames}
-\usepackage{theoremList}
+\usepackage{theoremNames} % Définition des théorèmes et de leur noms
 
-\usepackage{francisation}
-\usepackage{algo}
+\usepackage{francisation} % Traduction des noms de listes, de sections, chapitres....  
+\usepackage{theoremList} % Macro pour effectuer des listes de théorèmes, voir plus bas pour la liste de définitions.
 
-\usepackage{couleurs}
-\usepackage{colorationSyntaxique}
+\usepackage{couleurs} % Définitions de couleurs pour ce manuscript
+
+\usepackage{algo} % Pour l'utilisation du package algorithmic avec les termes en français
+
+\usepackage{colorationSyntaxique} % Pour l'utilisation du package lstlistings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pour l'entête des pages  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Pour que l'entête choisi ne soit pas en majuscules
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+
+\fancyhead[LE,RO]{\textbf{\thepage}} % Sur les pages paires à gauche (LE) et sur les pages impaires à droite (RO) on met le numéro de page
+\fancyhead[LO]{\textsl{\rightmark}} % Sur les pages impaires à gauche (LO), on met la section courante (4.3 -- Section 1)
+\fancyhead[RE]{\textsl{\leftmark}} % Sur les pages paire à droite (RE), on met le chapitre courant (CHAPITRE 2 -- La Pâtisserie)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Macros customisées  %
@@ -42,15 +60,7 @@
 \newcommand{\ere}{\ensuremath{^{\acute{e}re}}}
 \newcommand{\er}{\ensuremath{^{er}}}
 
-\def\ojo#1{{\color{pink}#1}}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{#1}}
-\fancyhead[LE,RO]{\textbf{\thepage}}
-\fancyhead[LO]{\textsl{\rightmark}}
-\fancyhead[RE]{\textsl{\leftmark}}
+\def\ojo#1{{\color{alert}#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +73,7 @@
 % Coloration des liens
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, breaklinks=true, colorlinks=true, citecolor=bleu, linkcolor=pink]{hyperref}
+\usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, breaklinks=true, colorlinks=true, citecolor=citeColor, linkcolor=linkColor]{hyperref}
 \usepackage{bookmark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

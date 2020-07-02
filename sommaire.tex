@@ -2,116 +2,64 @@
 
 \usepackage{mesmacros}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\titre{Pourquoi les macarons de Ladurée sont-ils si bons ?}
-%\soustitre{C'est si bon}
-\title{Why Ladurée macarons are so good?}
-\firstname{Pierre}
-\lastname{Hermé}
-%\laboratoire{} %Déclaration du nom du labo si ce n'est pas l'I3S
-%\cotutelle{Université de la Pâtisserie} % Ajouter une cotutelle si elle existe
-%\cotutellelogo{Pastry_Bag.png}
-\date{} % Mettre la date de soutenance
-\discipline{Pâtisserie} % Informatique par défaut
-%\cofinanceurslogo{Pastry_Bag.png, Pastry_Bag.png, Pastry_Bag.png}
-%\hdr
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{titreEtInfos}
 
 
 \begin{document}
   \pagenumbering{roman}  
+  
+  \input{jury}
+  
+  \maketitle
 
-%%------------------------------------------------------------------- Le jury
-\begin{jury}[Paul \Nom{Bocuse}, Grand chef cuisinier/L'Auberge du Pont de Collonges]%% Mettre ici le nom du président
-%% Autant de lignes \rapporteur que nécessaire
-%% Autant de lignes \examinateur que nécessaire
-  \rapporteur{Patrick \Nom{Lenôtre}}{Chef de cuisine}{Pavillon des Princes, Paris}
-  \rapporteur{Christophe \Nom{Michalak}}{Chef pâtissier}{l'Hôtel Plaza-Athénée, Paris}
-  \examinateur{Cédric \Nom{Grolet}}{Chef pâtissier}{Le Meurice}
-  \invite{Michel \Nom{Guérard}}{Cuisinier}{Les Prés d'Eugénie}
-  \directeur{Jean-Paul \Nom{Hévin}}
-  \codirecteur{Antoine \Nom{Santos}}
-  \coencadrant{Laurent \Nom{Duchêne}}
-\end{jury}
+  \begin{dedicace}
+    À toi lecteur <3 :*
+  \end{dedicace}
 
-%%-----------------------------------------------------------------------------
+  \cleardoublepage
+  
+  \input{resume}
+  
+  \input{remerciements}
 
-\maketitle
+  \tableofcontents
 
-\begin{dedicace}
-  À toi lecteur <3 :*
-\end{dedicace}
+  \mainmatter
 
-\cleardoublepage
-%%------------------------------------------------ Le résumé et les mots-clés -
-\begin{ResumeMotsCles}
-%% Résumé en français : pas plus de 2000 caractères
-\begin{resume}
-Les macarons c'est bon par nature, c'est le propre même du macaron que d'être bon. Au vue de l'affluence constante aux divers magasins Ladurée on peut supposer que les macarons qu'on y trouve sont meilleurs qu'ailleurs. Cette thèse vise à donner des idées et pistes sur le pourquoi du comment que les macarons de Ladurée sont si bons.
-\end{resume}
+  \input{introduction/introduction}
+  \input{notations}
 
-%% Résumé en anglais : pas plus de 2000 caractères
-\begin{abstract}
-Macarons are so good.
-\end{abstract}
+  \Part{État de l'art}
+  \input{chapitre2/chapitre2}
+  \input{chapitre3/chapitre3}
 
-%% Mots-clés en français
-\motscles{Pâtisserie, Macaron, Ladurée.}
-%% Mots-clés en anglais
-\keywords{Pastry, Macaron, Ladurée.}
-\end{ResumeMotsCles}
+  \Part{Contributions}
+  \input{chapitre4/chapitre4}
+  \input{chapitre5/chapitre5}
+  
+  \bookmarksetup{startatroot}
+  \input{conclusion/conclusion}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{remerciements}
-Merci !
-\end{remerciements}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \backmatter
 
+  \bibliographystyle{plain}
+  \bibliography{biblio}
+  \addcontentsline{toc}{section}{Bibliographie} 
 
+  \listoffigures
+%. \listoftables
 
-\tableofcontents
+  \renewcommand{\listtheoremname}{Liste des définitions}
+  \listoftheorems[ignoreall,show={definition}]
 
-\mainmatter
+  \renewcommand{\listtheoremname}{Liste des exemples}
+  \listoftheorems[ignoreall,show={example}]
 
-\input{introduction/introduction.tex}
-\input{notations.tex}
-
-\Part{État de l'art}
-\input{chapitre2/chapitre2.tex}
-\input{chapitre3/chapitre3.tex}
-
-\Part{Contributions}
-\input{chapitre4/chapitre4.tex}
-\input{chapitre5/chapitre5.tex}
-
-\input{conclusion/conclusion.tex}
-
-\backmatter
-
-\bibliographystyle{plain}
-\bibliography{biblio}
-
-\addcontentsline{toc}{section}{Bibliographie} 
-
-\listoffigures
-%\listoftables
-
-\renewcommand{\listtheoremname}{Liste des définitions}
-\listoftheorems[ignoreall,show={definition}]
-
-\pagestyle{empty}
-
-\renewcommand{\listtheoremname}{Liste des exemples}
-\listoftheorems[ignoreall,show={example}]
-
-\listofalgorithms
+  \listofalgorithms
 
 
-\appendix
-
-\input{annexe/annexe}
+  \appendix
+  \input{annexe/annexe}
 
 \end{document}
