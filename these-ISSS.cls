@@ -46,7 +46,7 @@
 \RequirePackage{keyval}%
 \RequirePackage{color}
 \RequirePackage[final]{graphicx}
-\graphicspath{{images/}{img/}{fig/}}
+\graphicspath{{images//}{img//}{fig//}}
 \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
 \RequirePackage{amsthm}
 \RequirePackage{lmodern}
@@ -502,8 +502,8 @@
 			\vspace*{2.cm}
 			{\Large\bf Jury :}\\[0.5cm]
 			{\large
-			{\bf \presidentname\xspace du jury}\\[0.1cm]
-			\@president, \@presidentAdr\\[0.3cm]
+			\if\@president\@empty\else{\bf \presidentname\xspace du jury}\\[0.1cm]
+			\@president, \@presidentAdr\\[0.3cm]\fi
 			{\bf \rapporteursname}\\[0.1cm]
 			\@rappoteurs\\[-0.2cm]
 			{\bf \examinateursname}\\[0.1cm]
@@ -1622,7 +1622,7 @@
 				}
 				\begin{lrbox}{\@juryBoxA}
 					\begin{tabular}{p{0.45\linewidth}}
-						\@president, \@presidentAdr\\
+						\if\@president\@empty\else\@president, \@presidentAdr\\\fi
 						}{\end{tabular}\end{lrbox}%
 				\global\setbox\@juryBox=\vbox{\copy\@juryBoxA}}
 			\newcommand{\juryDefaut}{%

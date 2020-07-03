@@ -2,7 +2,7 @@
 
 \chapter{Chapitre 5}
 
-\chaptoc
+\input{abstract}
 
 \tikzstyle{nodedefault} = [draw, circle]
 \tikzstyle{edgedefault} = [draw]
@@ -42,7 +42,7 @@
   \centering
     
   \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}] 
-    \input{chapitre5/graphe}
+    \input{img/graphe}
   \end{tikzpicture}
     
   \caption{Graphe de départ}
@@ -78,7 +78,7 @@ La figure \ref{fig:graphe} est vraiment magnifique.
       
       \tikzset{a13/.style = {red, dashed, thick}}
       
-      \input{chapitre5/graphe}      
+      \input{img/graphe}      
     \end{tikzpicture}
     
     \caption{Graphe avec des nœuds en rose et d'autres en bleu}
@@ -92,7 +92,7 @@ La figure \ref{fig:graphe} est vraiment magnifique.
     \centering
     
     \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
-      \input{chapitre5/graphe}
+      \input{img/graphe}
       
       \tikzset{every node/.style = {}} % on ne veut plus de cercle autour des nœuds
       \node[red] () at ($(1) !.5! (2)$) {toto}; % directement au milieu

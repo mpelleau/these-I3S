@@ -1,6 +1,8 @@
 \documentclass[final]{these-ISSS}
 
 \usepackage{mesmacros}
+\usepackage{import}
+\usepackage{lipsum}
 
 
 \input{titreEtInfos}
@@ -31,12 +33,12 @@
   \input{notations}
 
   \Part{État de l'art}
-  \input{chapitre2/chapitre2}
-  \input{chapitre3/chapitre3}
+  \subimport{chapitre2/}{chapitre2.tex}
+  \subimport{chapitre3/}{chapitre3.tex}
 
   \Part{Contributions}
-  \input{chapitre4/chapitre4}
-  \input{chapitre5/chapitre5}
+  \subimport{chapitre4/}{chapitre4.tex}
+  \subimport{chapitre5/}{chapitre5.tex}
   
   \bookmarksetup{startatroot}
   \input{conclusion/conclusion}
