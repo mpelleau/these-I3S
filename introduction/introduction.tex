@@ -2,12 +2,48 @@
 
 \chapter{Introduction}
 
+Tel que définit par le dictionnaire de l'Académie Française \citeweb{AC9}, macaron désigne une petite pâtisserie ronde aux amandes. Emprunté, avec altération du sens, de l’italien du Sud \textit{maccarone}, qui désigne différentes sortes de pâtes alimentaires.
+
+Texte pris ici : \citeweb{Wiki}.
+
+Le macaron est un petit gâteau à l'amande, granuleux et moelleux, à la forme arrondie, d'environ 3 à 5 cm de diamètre, dérivé de la meringue.
+
+Il est fabriqué à partir d'amandes concassées, de sucre glace, de sucre et de blancs d'œufs, la quantité d'amande devant être égale à la quantité de sucre glace (ce qu'on appelle le tant pour tant). La pâte ainsi préparée est déposée sur une plaque de four et cuite. Ceci lui donne sa forme particulière d'une pâte figée et dorée à la cuisson.
+
+C'est une spécialité culinaire de plusieurs villes et régions françaises, et dont la recette et l'aspect varient selon les endroits.
+
+Le macaron ne doit pas être confondu avec les confiseries à base de pâte d'amande appelées massepain, ni avec le congolais à base de chair de noix de coco râpée.
+
 \section{Contexte}
+
+Les publications dans la bibliographie générale doivent être citées avec la macro \texttt{\textbackslash cite\{key\}} exemple : \\
+
+\noindent\cite{T2012} 
+\begin{verbatim}\cite{T2012}\end{verbatim}
+
+Les publications pour la section pages web doivent être citées avec la macro \texttt{\textbackslash citeweb\{key\}} exemple : \\
+
+\noindent\citeweb{AC9} 
+\begin{verbatim}\citeweb{AC9}\end{verbatim}
+
+Les publications pour la section correspondant à vos publications doivent être citées avec la macro \texttt{\textbackslash citemine\{key\}} exemple : \\
+
+\noindent\citemine{DHHS2011} 
+\begin{verbatim}\citemine{DHHS2011}\end{verbatim}
+
 
 \section{Présentation de la problématique}
 
 \section{Organisation de ce manuscrit}
 
 \section{Nos contributions}
+
+Nous avons fait ça qui a fait l'objet de la publication \citemine{DHHS2011}. Puis nous avons fait ci qui a fait l'objet de la publication \citemine{HHSD2011}. Finalement nous avons fait cela qui a fait l'objet de la publication \citemine{HHSD2012}.
+ 
+
+  
+\renewcommand{\bibtitle}{\section*{\refname}}
+\bibliographystylemine{plain}
+\bibliographymine{biblio}
 
 

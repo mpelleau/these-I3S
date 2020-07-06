@@ -4,6 +4,11 @@
 \usepackage{import}
 \usepackage{lipsum}
 
+% Biblio pour les pages webs
+\newcites{web}{Pages web}
+% Biblio pour mes publications
+\newcites{mine}{Mes publications}
+
 
 \input{titreEtInfos}
 
@@ -33,8 +38,8 @@
   \input{notations}
 
   \Part{État de l'art}
-  \subimport{chapitre2/}{chapitre2.tex}
-  \subimport{chapitre3/}{chapitre3.tex}
+\subimport{chapitre2/}{chapitre2.tex}
+\subimport{chapitre3/}{chapitre3.tex}
 
   \Part{Contributions}
   \subimport{chapitre4/}{chapitre4.tex}
@@ -45,9 +50,13 @@
 
   \backmatter
 
+  \renewcommand{\bibtitle}{\bibchapter}
   \bibliographystyle{plain}
   \bibliography{biblio}
-  \addcontentsline{toc}{section}{Bibliographie} 
+  
+  \renewcommand{\bibtitle}{\section*{\refname}}
+  \bibliographystyleweb{plain}
+  \bibliographyweb{biblio}
 
   \listoffigures
 %. \listoftables

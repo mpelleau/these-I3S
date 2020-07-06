@@ -58,6 +58,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{eso-pic}
 \RequirePackage{pgffor}
+\RequirePackage{multibib}
 \frenchspacing
 
 %% Emprunté sur http://www.tuteurs.ens.fr/logiciels/latex/nouveau_package.html %%
@@ -1200,13 +1201,15 @@
 					\gdef\@bibid{$Biblio from multiple Bib\TeX{} files \{\@bibfiles\}$}%
 					\fi%
 				}
-				\AtBeginDocument{\renewenvironment{thebibliography}[1]
-					{\newpage
+				\def\bibchapter{\newpage
 						\global\@intablestrue
 						\gdef\chapterTitle{\MakeUppercase\bibname}
 						\chapter*{\bibname
 							\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}%
-						\addcontentsline{toc}{chapter}{\bibname}
+						\addcontentsline{toc}{chapter}{\bibname}}
+				\def\bibtitle{\@bibtitle}
+				\AtBeginDocument{\renewenvironment{thebibliography}[1]
+					{\bibtitle
 						\if\@bibid.\gdef\@bibid{$Biblio from Bib\TeX{} file(s) \{\@bibfiles\}$}\fi
 						\Revision{\@bibid}
 						\list{\@biblabel{\@arabic\c@enumiv}}%
@@ -1864,205 +1867,205 @@
 				\end{flushright}\end{quote}\end{minipage}\end{savenotes}\vspace{.3cm}}
 			
 			
-			% Paramètres pour \InPetto{}
-			\reversemarginpar
-			\setlength{\marginparwidth}{2.3cm}
-			\setlength{\marginparsep}{1mm}
+% Paramètres pour \InPetto{}
+\reversemarginpar
+\setlength{\marginparwidth}{2.3cm}
+\setlength{\marginparsep}{1mm}
 			
-			% Mise en forme d'un nom propre
-			%\newcommand{\Nom}[1]{\index{#1@\textsc{#1}}{\textsc{#1}}}
-			\newcommand{\Nom}[1]{{\textsc{#1}}}			
+% Mise en forme d'un nom propre
+%\newcommand{\Nom}[1]{\index{#1@\textsc{#1}}{\textsc{#1}}}
+\newcommand{\Nom}[1]{{\textsc{#1}}}			
 			
-			\AtBeginDocument{
-				% Correction pb interaction babel et input/latin1
-				\def\@Fpt{{\ifcase\value{part}\or Première\or Deuxième\or
-						Troisième\or Quatrième\or Cinquième\or Sixième\or
-						Septième\or Huitième\or Neuvième\or Dixième\or Onzième\or
-						Douzième\or Treizième\or Quatorzième\or Quinzième\or
-						Seizième\or Dix-septième\or Dix-huitième\or Dix-neuvième\or
-						Vingtième\fi}\space\def\thepart{}}%
+\AtBeginDocument{
+	% Correction pb interaction babel et input/latin1
+	\def\@Fpt{{\ifcase\value{part}\or Première\or Deuxième\or
+		Troisième\or Quatrième\or Cinquième\or Sixième\or
+		Septième\or Huitième\or Neuvième\or Dixième\or Onzième\or
+		Douzième\or Treizième\or Quatorzième\or Quinzième\or
+		Seizième\or Dix-septième\or Dix-huitième\or Dix-neuvième\or
+		Vingtième\fi}\space\def\thepart{}}%
+	
+	\if@revision % On veut faire afficher les infos de révision
+		\newcommand{\Revision}[1]{\footnotetext{{\blue\sffamily \(#1\)}}}
+	\else
+		\newcommand{\Revision}[1]{\relax}
+	\fi
+}
+
+\def\lastpage@putlabel{\addtocounter{page}{-1}%
+	\immediate\write\@auxout{\string
+	\newlabel{last@page}{{}{\thepage}}{}{}{}}%
+	\addtocounter{page}{1}}
+			
+\AtEndDocument{
+	\fourthcover
+	%  \clearpage
+	\lastpage@putlabel
+}
+			
+% Classification ACM
+\newcommand{\categoryname}{Catégories et descripteurs de sujets :}
+\newcommand{\termsname}{Termes généraux :}
+
+\let\@keywords=\@empty
+\let\@motscles=\@empty
+\newcommand{\keywords}[1]{\gdef\@keywords{#1}}
+\newcommand{\motscles}[1]{\gdef\@motscles{#1}}
+
+% Catégories ACM
+\newsavebox{\@classificationBox}
+\newbox{\@classificationBoxGlobal}
+\newenvironment{classification}{%
+	\begin{lrbox}{\@classificationBox}%
+		\begin{minipage}{\textwidth}}{%
+			\vspace*{-5pt}
+			\begin{center}
+				\textbf{Classification \textsc{acm}}
+			\end{center}
+			\vspace*{-10pt}
+			% La partie ci-dessous est reprise de esub2acm.
+			\ifx\@categories\@empty \else
+				\vskip 4\p@\relax 
+				\def\and{\unskip{\rm;} }%
+				\categoryname\ \@categories\par
+			\fi
+			\ifx\@terms\@empty\else
+				\vskip 4\p@
+				\termsname\ \ignorespaces
+				\@terms
+				\par
+			\fi
+		\end{minipage}\end{lrbox}
+	\global\setbox\@classificationBoxGlobal=\vbox{\copy\@classificationBox}}
+
+% Ci-dessous: code repris de esub2acm.cls
+\def\terms{\gdef\@terms}
+\let\@terms\@empty
+\def\category#1#2#3{%
+	\@ifnextchar [{\@category{#1}{#2}{#3}}{\@category{#1}{#2}{#3}[]}%
+}
+\def\@category#1#2#3[#4]{%
+	\edef\@tempa{\ifx \@categories\@empty \else ; \fi}%
+	\begingroup
+	\def\protect{\noexpand\protect\noexpand}%
+	\let\and\relax
+	\xdef\@categories{%
+		\@categories
+		\@tempa
+		#1 [{\bf #2}]%
+		\if!#4!%
+			\if!#3!\else : #3\fi
+		\else
+			:\space
+			\if!#3!\else #3\kern\z@---\hskip\z@\fi
+			{\it #4}%
+		\fi
+	}%
+	\endgroup
+}
+\let\@categories\@empty
+% << Classification ACM
 				
-				\if@revision % On veut faire afficher les infos de révision
-				\newcommand{\Revision}[1]{\footnotetext{{\blue\sffamily \(#1\)}}}
-				\else
-				\newcommand{\Revision}[1]{\relax}
-				\fi
-			}
-			
-			\def\lastpage@putlabel{\addtocounter{page}{-1}%
-				\immediate\write\@auxout{\string
-					\newlabel{last@page}{{}{\thepage}}{}{}{}}%
-				\addtocounter{page}{1}}
-			
-			\AtEndDocument{
-				\fourthcover
-				%  \clearpage
-				\lastpage@putlabel
-			}
-			
-			% Classification ACM
-			\newcommand{\categoryname}{Catégories et descripteurs de sujets :}
-			\newcommand{\termsname}{Termes généraux :}
-			
-			\let\@keywords=\@empty
-			\let\@motscles=\@empty
-			\newcommand{\keywords}[1]{\gdef\@keywords{#1}}
-			\newcommand{\motscles}[1]{\gdef\@motscles{#1}}
-			
-			% Catégories ACM
-			\newsavebox{\@classificationBox}
-			\newbox{\@classificationBoxGlobal}
-			\newenvironment{classification}{%
-				\begin{lrbox}{\@classificationBox}%
-					\begin{minipage}{\textwidth}}{%
-						\vspace*{-5pt}
-						\begin{center}
-							\textbf{Classification \textsc{acm}}
-						\end{center}
-						\vspace*{-10pt}
-						% La partie ci-dessous est reprise de esub2acm.
-						\ifx\@categories\@empty \else
-						\vskip 4\p@\relax 
-						\def\and{\unskip{\rm;} }%
-						\categoryname\ \@categories\par
-						\fi
-						\ifx\@terms\@empty\else
-						\vskip 4\p@
-						\termsname\ \ignorespaces
-						\@terms
-						\par
-						\fi
-					\end{minipage}\end{lrbox}
-					\global\setbox\@classificationBoxGlobal=\vbox{\copy\@classificationBox}}
-				% Ci-dessous: code repris de esub2acm.cls
-				\def\terms{\gdef\@terms}
-				\let\@terms\@empty
-				\def\category#1#2#3{%
-					\@ifnextchar [{\@category{#1}{#2}{#3}}{\@category{#1}{#2}{#3}[]}%
-				}
-				\def\@category#1#2#3[#4]{%
-					\edef\@tempa{\ifx \@categories\@empty \else ; \fi}%
-					\begingroup
-					\def\protect{\noexpand\protect\noexpand}%
-					\let\and\relax
-					\xdef\@categories{%
-						\@categories
-						\@tempa
-						#1 [{\bf #2}]%
-						\if!#4!%
-						\if!#3!\else : #3\fi
-						\else
-						:\space
-						\if!#3!\else #3\kern\z@---\hskip\z@\fi
-						{\it #4}%
-						\fi
-					}%
-					\endgroup
-				}
-				\let\@categories\@empty
-				% << Classification ACM
-				
-				\def\@titre{\ClassError{these-ISSS}{Il manque le titre en français}{
-						Utilisez la macro \noexpand\titre}}
-				\def\@title{\ClassError{these-ISSS}{Il manque le titre en anglais}{
-						Utilisez la macro \noexpand\title}}
-				\def\@soustitre{.}
-				\def\@subtitle{.}
-				\def\titre#1{\gdef\@titre{#1}}
-				\def\soustitre#1{\gdef\@soustitre{#1}}
-				\def\subtitle#1{\gdef\@subtitle{#1}}
-				\def\if@soustitre#1{\if\@soustitre.\else{#1\@soustitre}\fi}
-				\def\if@subtitle#1{\if\@subtitle.\else{#1\@subtitle}\fi}
-				
-				% Environnement ``contenu''
-				\newenvironment{contenu}{%
-					\par\vspace{2cm}\begin{center}\begin{EnGrise}%
-							\begin{minipage}{12cm}\Large\bfseries}{%
-							\end{minipage}\end{EnGrise}\end{center}}
+\def\@titre{\ClassError{these-ISSS}{Il manque le titre en français}{Utilisez la macro \noexpand\titre}}
+\def\@title{\ClassError{these-ISSS}{Il manque le titre en anglais}{Utilisez la macro \noexpand\title}}
+\def\@soustitre{.}
+\def\@subtitle{.}
+\def\titre#1{\gdef\@titre{#1}}
+\def\soustitre#1{\gdef\@soustitre{#1}}
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\if@soustitre#1{\if\@soustitre.\else{#1\@soustitre}\fi}
+\def\if@subtitle#1{\if\@subtitle.\else{#1\@subtitle}\fi}
+
+% Environnement ``contenu''
+\newenvironment{contenu}{%
+	\par\vspace{2cm}\begin{center}\begin{EnGrise}%
+		\begin{minipage}{12cm}\Large\bfseries}{%
+		\end{minipage}\end{EnGrise}\end{center}}
 							
-							%% Crédit photo
-							\newsavebox{\credit@box}
-							\newbox{\credit@boxG}
-							\newcommand{\creditname}{Crédit photo}
-							\newenvironment{creditPhoto}{%
-								\begin{lrbox}{\credit@box}
-									\begin{minipage}{\textwidth}
-										\begin{center}
-											\textbf{\creditname}\par
-										\end{center}
-									}{%
-								\end{minipage}
-							\end{lrbox}
-							\global\setbox\credit@boxG=\vbox{\copy\credit@box}}
+%% Crédit photo
+\newsavebox{\credit@box}
+\newbox{\credit@boxG}
+\newcommand{\creditname}{Crédit photo}
+\newenvironment{creditPhoto}{%
+	\begin{lrbox}{\credit@box}
+		\begin{minipage}{\textwidth}
+			\begin{center}
+				\textbf{\creditname}\par
+			\end{center}
+	}{%
+		\end{minipage}
+	\end{lrbox}
+	\global\setbox\credit@boxG=\vbox{\copy\credit@box}}
+
+%% Citation inversée de la bibliographie basée sur le package backref
+\ifb@ckref
+	\typeout{On charge backref avec l'option \b@ckrefstyle}
+	\RequirePackage[verbose, \b@ckrefstyle]{backref}
+\fi
+
+%% Les macros suivantes n'ont de sens que si b@ckref est \`a vrai!!!
+%% permet de manger ce qu'il y a entre une virgule et un $
+\def\m@nge@gule#1{
+	\@ifnextchar${\expandafter\if$}%$ Pour XEmacs
+	{\m@nge@gule}%
+}
+
+%% permet de manger l'argument en relanÃ§ant une itération.
+\def\m@ngec@r#1{\if@virgule}
+
+%% équivalent \`a \iftrue s'il y a une virgule avant le prochain $, \iffalse sinon.
+\def\if@virgule{%
+	\@ifnextchar,{\m@nge@gule}{%
+		\@ifnextchar${\expandafter\if10}
+		{\m@ngec@r}%$ Pour XEmacs
+	}%
+}
+
+%% Texte explicite au singulier ou au pluriel selon les cas.
+\def\b@ckref#1{%
+	\expandafter\expandafter\expandafter\if@virgule#1$%$ Pour XEmacs
+		Cette référence a été citée \b@ckrefnamepluriel
+	\else
+		Cette référence a été citée \b@ckrefnamesingulier
+	\fi%
+	#1%
+}
+
+%% Redéfinition de backref.
+%% Citation explicite (\cite) ou implicite (\nocite).
+%% Texte explicite au singulier ou au pluriel selon les cas.
+\def\backref#1{
+	\expandafter\ifx#1\relax
+		Cette référence n'a pas été citée explicitement%
+	\else
+		\b@ckref{#1}%
+	\fi
+}
+
+%% Redéfinition de BR@@lbibitem et de BR@@bibitem.
+%% Ajout du point final.
+\def\BR@@lbibitem[#1]#2#3\par{%
+	\BRorg@bibitem[#1]{#2}#3
+	\newblock
+	\begingroup
+	\csname @safe@activestrue\endcsname
+	\backref{\csname br@#2\endcsname}.%
+	\endgroup
+	\par
+}%
+
+\def\BR@@bibitem#1#2\par{%
+	\BRorg@bibitem{#1}#2
+	\newblock
+	\begingroup
+	\csname @safe@activestrue\endcsname
+	\backref{\csname br@#1\endcsname}.%
+	\endgroup
+	\par
+}
 						
-						%% Citation inversée de la bibliographie basée sur le package backref
-						\ifb@ckref
-						\typeout{On charge backref avec l'option \b@ckrefstyle}
-						\RequirePackage[verbose, \b@ckrefstyle]{backref}
-						\fi
-						
-						%% Les macros suivantes n'ont de sens que si b@ckref est \`a vrai!!!
-						%% permet de manger ce qu'il y a entre une virgule et un $
-						\def\m@nge@gule#1{
-							\@ifnextchar${\expandafter\if$}%$ Pour XEmacs
-							{\m@nge@gule}%
-						}
-						
-						%% permet de manger l'argument en relanÃ§ant une itération.
-						\def\m@ngec@r#1{\if@virgule}
-						
-						%% équivalent \`a \iftrue s'il y a une virgule avant le prochain $, \iffalse sinon.
-						\def\if@virgule{%
-							\@ifnextchar,{\m@nge@gule}{%
-								\@ifnextchar${\expandafter\if10}
-								{\m@ngec@r}%$ Pour XEmacs
-							}%
-						}
-						
-						%% Texte explicite au singulier ou au pluriel selon les cas.
-						\def\b@ckref#1{%
-							\expandafter\expandafter\expandafter\if@virgule#1$%$ Pour XEmacs
-							Cette référence a été citée \b@ckrefnamepluriel
-							\else
-							Cette référence a été citée \b@ckrefnamesingulier
-							\fi%
-							#1%
-						}
-						
-						%% Redéfinition de backref.
-						%% Citation explicite (\cite) ou implicite (\nocite).
-						%% Texte explicite au singulier ou au pluriel selon les cas.
-						\def\backref#1{
-							\expandafter\ifx#1\relax
-							Cette référence n'a pas été citée explicitement%
-							\else
-							\b@ckref{#1}%
-							\fi
-						}
-						
-						%% Redéfinition de BR@@lbibitem et de BR@@bibitem.
-						%% Ajout du point final.
-						\def\BR@@lbibitem[#1]#2#3\par{%
-							\BRorg@bibitem[#1]{#2}#3
-							\newblock
-							\begingroup
-							\csname @safe@activestrue\endcsname
-							\backref{\csname br@#2\endcsname}.%
-							\endgroup
-							\par
-						}%
-						\def\BR@@bibitem#1#2\par{%
-							\BRorg@bibitem{#1}#2
-							\newblock
-							\begingroup
-							\csname @safe@activestrue\endcsname
-							\backref{\csname br@#1\endcsname}.%
-							\endgroup
-							\par
-						}
-						
-						\endinput
-						%% Local Variables:
-						%% mode:latex
-						%% End:
+\endinput
+%% Local Variables:
+%% mode:latex
+%% End:
 						
