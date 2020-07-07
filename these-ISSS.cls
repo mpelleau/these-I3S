@@ -44,7 +44,6 @@
 \typeout{\RCSId}
 
 \RequirePackage{keyval}%
-\RequirePackage{color}
 \RequirePackage[final]{graphicx}
 \graphicspath{{images//}{img//}{fig//}}
 \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
