@@ -2,34 +2,68 @@
 
 \chapter{Introduction}
 
-Tel que définit par le dictionnaire de l'Académie Française \citeweb{AC9}, macaron désigne une petite pâtisserie ronde aux amandes. Emprunté, avec altération du sens, de l’italien du Sud \textit{maccarone}, qui désigne différentes sortes de pâtes alimentaires.
+Cette classe \LaTeX est basée sur la classe these-LINA écrite par Frédéric Goualard et modifiée par Alban Mancheron. La classe a été modifiée pour correspondre au modèle de thèse demandé par l'ED STIC de l'Université Côte d'Azur.
 
-Texte pris ici : \citeweb{Wiki}.
+Pour les autres ED, il suffit de supprimer le fichier \texttt{visuel.jpg} et de renommer le visuel correspondant à l'ED en \texttt{visuel.jpg}.
 
-Le macaron est un petit gâteau à l'amande, granuleux et moelleux, à la forme arrondie, d'environ 3 à 5 cm de diamètre, dérivé de la meringue.
+\section{Citations}
 
-Il est fabriqué à partir d'amandes concassées, de sucre glace, de sucre et de blancs d'œufs, la quantité d'amande devant être égale à la quantité de sucre glace (ce qu'on appelle le tant pour tant). La pâte ainsi préparée est déposée sur une plaque de four et cuite. Ceci lui donne sa forme particulière d'une pâte figée et dorée à la cuisson.
+Dans ce document on a créé 3 bibliographie :
+\begin{itemize}
+  \item la bibliographie pour les publications personnelles,
+  \item la bibliographie pour les pages web,
+  \item et la bibliographie générale.
+\end{itemize}
 
-C'est une spécialité culinaire de plusieurs villes et régions françaises, et dont la recette et l'aspect varient selon les endroits.
+Elles sont définies au début du fichier \texttt{sommaire.tex}.
 
-Le macaron ne doit pas être confondu avec les confiseries à base de pâte d'amande appelées massepain, ni avec le congolais à base de chair de noix de coco râpée.
+\begin{framed}
+\begin{verbatim}
+% Biblio pour les pages webs
+\newcites{web}{Pages web}
+% Biblio pour mes publications
+\newcites{mine}{Mes publications}
+\end{verbatim}\vspace{-0.5em}
+\end{framed}
 
-\section{Contexte}
+On utilise pour cela le package \texttt{multibib}, vous pouvez ajouter les votre ou renommer celles existantes, il ne faut pas oublier de modifier le fichier \texttt{Makefile} pour compiler les nouvelles bibliographies ou supprimer la compilation de celles que vous n'utiliser pas.
 
-Les publications dans la bibliographie générale doivent être citées avec la macro \texttt{\textbackslash cite\{key\}} exemple : \\
+\paragraph{Les publications dans la bibliographie générale} doivent être citées avec la macro \texttt{\textbackslash cite\{key\}}.
 
-\noindent\cite{T2012} 
-\begin{verbatim}\cite{T2012}\end{verbatim}
+\begin{framed}
+\noindent\cite{T2012}\vspace{-0.5em}
+\begin{verbatim}\cite{T2012}\end{verbatim}\vspace{-0.75em}
+\end{framed}
 
-Les publications pour la section pages web doivent être citées avec la macro \texttt{\textbackslash citeweb\{key\}} exemple : \\
+\paragraph{Les publications pour la section pages web} doivent être citées avec la macro \texttt{\textbackslash citeweb\{key\}}.
 
-\noindent\citeweb{AC9} 
-\begin{verbatim}\citeweb{AC9}\end{verbatim}
+\begin{framed}
+\noindent\citeweb{AC9} \vspace{-0.5em}
+\begin{verbatim}\citeweb{AC9}\end{verbatim}\vspace{-0.75em}
+\end{framed}
 
-Les publications pour la section correspondant à vos publications doivent être citées avec la macro \texttt{\textbackslash citemine\{key\}} exemple : \\
+\paragraph{Les publications pour la section correspondant à vos publications} doivent être citées avec la macro \texttt{\textbackslash citemine\{key\}}.
 
-\noindent\citemine{DHHS2011} 
-\begin{verbatim}\citemine{DHHS2011}\end{verbatim}
+\begin{framed}
+\noindent\citemine{DHHS2011} \vspace{-0.5em}
+\begin{verbatim}\citemine{DHHS2011}\end{verbatim}\vspace{-0.75em}
+\end{framed}
+
+Pour référencer vos publications par la suite, vous pouvez utiliser la macro \texttt{\textbackslash cite} ou la macro \texttt{\textbackslash citemine}.
+Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscript vous pouvez soit la citer avec \texttt{\textbackslash cite} ou l'insérer avec \texttt{\textbackslash nocite}. \nocite{DHHS2011} 
+
+Attention si vous utilisez un style de bibliographie numérotant les références, vous aurez des problèmes de numérotation si une publication est à la fois citée en utilisant la macro \texttt{\textbackslash cite} et la macro \texttt{\textbackslash citemine}.
+
+
+Chaque bibliographie peut ensuite être affichée en utilisant les lignes suivantes :
+
+\begin{framed}
+\begin{verbatim}\bibliographystyle<s>{apalike}
+\bibliography<s>{biblio}
+\end{verbatim}\vspace{-0.5em}
+\end{framed}
+
+où \verb|<s>| correspond à la bibliographie que l'on veut afficher.
 
 
 \section{Présentation de la problématique}
@@ -43,7 +77,7 @@ Nous avons fait ça qui a fait l'objet de la publication \citemine{DHHS2011}. Pu
 
   
 \renewcommand{\bibtitle}{\section*{\refname}}
-\bibliographystylemine{plain}
+\bibliographystylemine{apalike}
 \bibliographymine{biblio}
 
 

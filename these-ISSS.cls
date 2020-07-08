@@ -8,7 +8,7 @@
 %%          Modifié par Marie Pelleau <Marie.Pelleau@unice.fr>
 %%          I3S, France
 %% Maintenance : 
-%%         Association ADSTIC
+%%         https://github.com/mpelleau/these-I3S
 %% Style basé sur 'these-LINA.cls'
 %% CVS Id: $Id: these-ISSS.cls,v 2.10 2020/06/24 14:16:37 mpelleau $
 %%-----------------------------------------------------------------------------
@@ -385,7 +385,7 @@
 		 		\put(25.75, 262){ 
 					\parbox[b][\paperheight]{\paperwidth}{ 
 						\vfill 
-						\includegraphics[width=\paperwidth]{visuel_STIC.jpg}
+						\includegraphics[width=\paperwidth]{visuel.jpg}
 						\vfill 
 					}
 				}
