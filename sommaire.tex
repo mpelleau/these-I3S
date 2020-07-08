@@ -1,5 +1,5 @@
 
-\documentclass[final]{these-ISSS} % Pour la version finale
+\documentclass{these-ISSS} % Pour la version finale
 %\documentclass[draft]{these-ISSS} % Pour une version brouillon
 %\documentclass[gray]{these-ISSS} % Pour une version en grayscale
 
@@ -41,14 +41,13 @@
   \input{notations}
 
   \Part{État de l'art}
-\subimport{chapitre2/}{chapitre2.tex}
-\subimport{chapitre3/}{chapitre3.tex}
+  \import{chapitre2/}{chapitre2}
+  \import{chapitre3/}{chapitre3}
 
   \Part{Contributions}
-  \subimport{chapitre4/}{chapitre4.tex}
-  \subimport{chapitre5/}{chapitre5.tex}
+  \import{chapitre4/}{chapitre4}
+  \import{chapitre5/}{chapitre5}
   
-  \bookmarksetup{startatroot}
   \input{conclusion/conclusion}
 
   \backmatter

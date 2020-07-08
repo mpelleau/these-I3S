@@ -30,22 +30,15 @@
 \def\versionnumber@these{v. \RCSRevision}
 \def\version@packageThese{\RCSDate\space\versionnumber@these}
 \ProvidesClass{these-ISSS}[\version@packageThese]
-\def\LoGiN{%
-	L\kern-.25em\raise.4ex%
-	\hbox{\sc o}%
-	\kern-.05emG\kern-.05em%
-	\lower.5ex\hbox{I}\kern-.05emN%
-	\spacefactor1000%
-	\xspace%
-}
+
 \typeout{Style de thèse I3S, Nice (version non officielle)}
 \typeout{© Association ADSTIC, Université Côte d'Azur}
 \typeout{par Frédéric Goualard, ..., Lucas, Norwin, DoccY, Marie Pelleau.}
 \typeout{\RCSId}
 
-\RequirePackage{keyval}%
+\RequirePackage{keyval}
 \RequirePackage[final]{graphicx}
-\graphicspath{{images//}{img//}{fig//}}
+\graphicspath{{images/}{img/}{fig/}}
 \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
 \RequirePackage{amsthm}
 \RequirePackage{lmodern}
@@ -142,27 +135,28 @@
 \newif\if@openright
 \newif\if@withParts
 \@withPartsfalse
+
 \if@compatibility\else
 \DeclareOption{revision}{\@revisiontrue}
-\DeclareOption{annexe}
-{\@inAnnexetrue}
-\DeclareOption{corps}
-{\@inAnnexefalse}
+\DeclareOption{annexe}{\@inAnnexetrue}
+\DeclareOption{corps}{\@inAnnexefalse}
 \DeclareOption{a4paper}
-{\setlength\paperheight {297mm}%
+	{\setlength\paperheight {297mm}%
 	\setlength\paperwidth  {210mm}}
-\DeclareOption{parts}
-{\global\@withPartstrue}
+\DeclareOption{parts}{\global\@withPartstrue}
 \fi
+
 \if@compatibility
-\renewcommand\@ptsize{0}
+	\renewcommand\@ptsize{0}
 \else
-\DeclareOption{10pt}{\renewcommand\@ptsize{0}}
+	\DeclareOption{10pt}{\renewcommand\@ptsize{0}}
 \fi
+
 \DeclareOption{11pt}{\renewcommand\@ptsize{1}}
 \DeclareOption{12pt}{\renewcommand\@ptsize{2}}
+
 \if@compatibility\else
-\DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
+	\DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
 \fi
 \DeclareOption{twoside}{\@twosidetrue  \@mparswitchtrue}
 \DeclareOption{draft}{%
@@ -175,23 +169,21 @@
 	}%
 }
 \if@compatibility\else
-\DeclareOption{final}{
-	\setlength\overfullrule{0pt}
-	\def\SK@refcolor{\lightgray}%
-	\def\SK@labelcolor{\lightgray}%
-}
+	\DeclareOption{final}{
+		\setlength\overfullrule{0pt}
+		\def\SK@refcolor{\lightgray}%
+		\def\SK@labelcolor{\lightgray}}
 \fi
 \DeclareOption{titlepage}{\@titlepagetrue}
 \if@compatibility\else
-\DeclareOption{notitlepage}{\@titlepagefalse}
-\fi
-\if@compatibility
-\else
-\DeclareOption{openright}{\@openrighttrue}
-\DeclareOption{openany}{\@openrightfalse}
+	\DeclareOption{notitlepage}{\@titlepagefalse}
 \fi
 \if@compatibility\else
-\DeclareOption{onecolumn}{\@twocolumnfalse}
+	\DeclareOption{openright}{\@openrighttrue}
+	\DeclareOption{openany}{\@openrightfalse}
+\fi
+\if@compatibility\else
+	\DeclareOption{onecolumn}{\@twocolumnfalse}
 \fi
 \DeclareOption{twocolumn}{\@twocolumntrue}
 \DeclareOption{leqno}{\input{leqno.clo}}
@@ -370,13 +362,35 @@
 	\vbox{\unvcopy\@juryBox}%
 }
 
+\def\@type{
+	\if@hdr
+		HABILITATION À DIRIGER\\[0.5cm]LES RECHERCHES
+	\else
+		THÈSE DE DOCTORAT
+	\fi
+}
+
+\def\@bloc{
+	\if@hdr
+		{\bfseries Présentée en vue de l’obtention de\\l'habilitation à diriger les recherche\\en} \@discipline\\
+	\else
+		{\bfseries Présentée en vue de l’obtention\\du grade de docteur en} \@discipline\\
+		{\bfseries d'}Université Côte d'Azur
+		\if\@coTutelle\@empty\else{\\\bfseries et de} \@coTutelle\fi\\[0.2cm]
+		{\bfseries Dirigée par :} \@directeurThese\\
+		\if\@codirecteurThese\@empty\else{\bfseries Co-dirigée par :} \@codirecteurThese\\\fi
+		\if\@coencadrantThese\@empty\else{\bfseries Co-encadrée par :} \@coencadrantThese\\\fi
+	\fi
+	\if\@date\@empty\else{{\bfseries Soutenue le :} \@date}\fi
+}
+
 % Début des pages de titre
 \if@titlepage
 \newcommand\maketitle{%
 	% Début page de titre
 	\begin{titlepage}
 	
-	\fontfamily{ptm}\selectfont
+		\fontfamily{ptm}\selectfont
 		\enlargethispage{3.5cm}
 		\begin{center}
 		
@@ -405,11 +419,7 @@
 			\begin{minipage}[b][2cm]{16cm}
 				\centering
 				{\color{white}\fontsize{36pt}{36pt}\selectfont\bfseries\fontfamily{qhv}\selectfont 
-					\if@hdr
-						HABILITATION À DIRIGER\\[0.5cm]LES RECHERCHES
-					\else
-						THÈSE DE DOCTORAT
-					\fi
+				    \@type
 				}
 			\end{minipage}\\[1.5cm]
 			
@@ -439,17 +449,7 @@
 			\hspace*{-1.cm}
 			\begin{minipage}[t]{7.cm}
 				\fontsize{11pt}{14pt}\selectfont
-				\if@hdr
-				{\bfseries Présentée en vue de l’obtention de\\l'habilitation à diriger les recherche\\en} \@discipline\\
-				\else
-				{\bfseries Présentée en vue de l’obtention\\du grade de docteur en} \@discipline\\
-				{\bfseries d'}Université Côte d'Azur
-				\if\@coTutelle\@empty\else{\\\bfseries et de} \@coTutelle\fi\\[0.2cm]
-				{\bfseries Dirigée par :} \@directeurThese\\
-				\if\@codirecteurThese\@empty\else{\bfseries Co-dirigée par :} \@codirecteurThese\\\fi
-				\if\@coencadrantThese\@empty\else{\bfseries Co-encadrée par :} \@coencadrantThese\\\fi
-				\fi
-				\if\@date\@empty\else{{\bfseries Soutenue le :} \@date}\fi
+				\@bloc
 			\end{minipage}\hspace*{0.5cm}
 			%%%% Bloc Jury
 			\begin{minipage}[t]{7.5cm}
@@ -467,9 +467,9 @@
 					\includegraphics[height=2cm]{\img}\hfill
 				}
 			\fi
-			\end{center}
-		\end{titlepage}
-		\voffset=-.3cm
+		\end{center}
+	\end{titlepage}
+	\voffset=-.3cm
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		% Troisième page																	%
@@ -564,7 +564,7 @@
 		\global\let\date\relax
 		\global\let\and\relax
 	}
-	\else
+\else
 	\newcommand\maketitle{\par
 		\begingroup
 		\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
@@ -615,7 +615,7 @@
 		\end{center}%
 		\par
 		\vskip 1.5em}
-	\fi
+\fi
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Fin title													%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
