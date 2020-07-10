@@ -2,108 +2,122 @@
 
 \chapter{Introduction}
 
-Cette classe \LaTeX est basée sur la classe \texttt{these-LINA} écrite par Frédéric Goualard. La classe a été modifiée pour correspondre au modèle de thèse demandé par l'ED STIC de l'Université Côte d'Azur.
+Cette classe \LaTeX est basée sur la classe \mytt{these-LINA} écrite par Frédéric Goualard. La classe a été modifiée pour correspondre au modèle de thèse demandé par l'ED STIC de l'Université Côte d'Azur.
 
-Pour les autres ED, il suffit de supprimer le fichier \texttt{visuel.jpg} dans le dossier \texttt{img/} et de renommer le visuel correspondant à l'ED en \texttt{visuel.jpg}.
+Pour les autres ED, il suffit de supprimer le fichier \mytt{visuel.jpg} dans le dossier \mytt{img/} et de renommer le visuel correspondant à l'ED en \mytt{visuel.jpg}.
 
 \section{Organisation}
   
-  Pour compiler ce document vous pouvez utiliser le \texttt{Makefile}.
+  Pour compiler ce document vous pouvez utiliser le \mytt{Makefile}.
 
   \subsection{Fichier principal et informations}
-  Le fichier principal est le fichier \texttt{sommaire.tex}, la classe du document est \texttt{these-ISSS}. 
+  Le fichier principal est le fichier \mytt{sommaire.tex}, la classe du document est \mytt{these-ISSS}. 
   Différentes options sont possibles :
   \begin{itemize}
-    \item \texttt{draft} pour une version brouillon du manuscrit, les liens sont désactivés et en noir, et les étiquettes des références sont affichées ;
-    \item \texttt{revision} qui ajoute à chaque première page de chapitre la date et l'heure de la dernière compilation en pied de page ;
-    \item \texttt{gray} pour une version en grayscale du manuscrit ;
-    \item \texttt{final} (par défaut) pour la version finale du manuscrit ;
-    \item \texttt{oneside} pour une impression recto et \texttt{twoside} (par défaut) pour une impression recto-verso ;
-    \item \texttt{notitlepage} pour un manuscrit sans page de titre et \texttt{titlepage} (par défaut) avec page de titre.
+    \item \mytt{draft} pour une version brouillon du manuscrit, les liens sont désactivés et en noir, et les étiquettes des références sont affichées ;
+    \item \mytt{revision} qui ajoute à chaque première page de chapitre la date et l'heure de la dernière compilation en pied de page ;
+    \item \mytt{gray} pour une version en grayscale du manuscrit ;
+    \item \mytt{final} (par défaut) pour la version finale du manuscrit ;
+    \item \mytt{oneside} pour une impression recto et \mytt{twoside} (par défaut) pour une impression recto-verso ;
+    \item \mytt{notitlepage} pour un manuscrit sans page de titre et \mytt{titlepage} (par défaut) avec page de titre.
   \end{itemize}
   
   Le titre du document ainsi que les informations correspondant au laboratoire, une co-tutelle ou les co-financeurs se trouvent dans le fichier \texttt{titreEtInfos.tex}.
   
-  Les informations relatives au jury, au directeur, co-directeur et co-encadrant se trouvent dans le fichier \texttt{jury.tex}.
+  Les informations relatives au jury, au directeur, co-directeur et co-encadrant se trouvent dans le fichier \mytt{jury.tex}.
   
-  Le résumée et les mots-clés en français et en anglais se trouvent dans le fichier \texttt{resume.tex}.
+  Le résumée et les mots-clés en français et en anglais se trouvent dans le fichier \mytt{resume.tex}.
   
   \subsection{Les chapitres}
   À l'exception des remerciements et des notations, chaque chapitre a son dossier. 
-  Ce n'est pas nécessaire mais c'est plus facile pour s'y retrouver après, et dans chaque dossier il y a le fichier principal, et il peut y avoir d'autre fichiers ou dossiers (par exemple un dossier \texttt{img/}).
+  Ce n'est pas nécessaire mais c'est plus facile pour s'y retrouver après, et dans chaque dossier il y a le fichier principal, et il peut y avoir d'autre fichiers ou dossiers (par exemple un dossier \mytt{img/}).
   
-  Les chapitres sont ajoutés aux document principal à l'aide des macros \verb|\input| ou \verb|\import|. À noter que la macro \verb|\include| ajoute forcément une nouvelle page et ne permet pas des inclusions en cascades, son utilisation est à éviter.
+  Les chapitres sont ajoutés au document principal à l'aide des macros \verb|\input| ou \verb|\import|. À noter que la macro \verb|\include| ajoute forcément une nouvelle page et ne permet pas des inclusions en cascade, son utilisation est à éviter.
   
   \subsection{Les paquets}
-  Les ajouts de paquets sont dans le fichier \texttt{mesmacros.sty}. Vous pouvez supprimer ou ajouter dans ce fichier d'autres paquets. 
+  Les ajouts de paquets sont dans le fichier \mytt{mesmacros.sty}. Vous pouvez supprimer ou ajouter dans ce fichier d'autres paquets. 
   
   Ce fichier utilise les fichiers suivant :
   \begin{itemize}
-    \item \texttt{francisation.sty} dans lequel se trouvent les traductions des différents noms de section ou listes ;
-    \item \texttt{couleurs.sty} dans lequel se trouvent des couleurs, et dans lequel vous pouvez ajouter des couleurs ;
-    \item \texttt{theoremNames.sty} dans lequel se trouvent les définitions de théorèmes ;
-    \item \texttt{theoremList.sty} dans lequel se trouve le code pour générer des listes de théorèmes, utilisé pour générer la liste des définitions et la liste des exemples à la fin de ce document ;
-    \item \texttt{algo.sty} pour les algorithmes en français avec le package \texttt{algorithmic} et \texttt{colorationSyntaxique.sty} pour la coloration syntaxique des algorithmes avec le package \texttt{lstlistings}.
+    \item \mytt{francisation.sty} dans lequel se trouvent les traductions des différents noms de section ou listes ;
+    \item \mytt{couleurs.sty} dans lequel se trouvent des couleurs, et dans lequel vous pouvez ajouter des couleurs ;
+    \item \mytt{theoremNames.sty} dans lequel se trouvent les définitions de théorèmes ;
+    \item \mytt{theoremList.sty} dans lequel se trouve le code pour générer des listes de théorèmes, utilisé pour générer la liste des définitions et la liste des exemples à la fin de ce document ;
+    \item \mytt{algo.sty} pour les algorithmes en français avec le package \mytt{algorithmic} et \mytt{colorationSyntaxique.sty} pour la coloration syntaxique des algorithmes avec le package \mytt{lstlistings}.
   \end{itemize}
 
 \section{Citations}
 
-Dans ce document on a créé 3 bibliographie :
+Dans ce document il y a 3 bibliographies :
 \begin{itemize}
   \item la bibliographie pour les publications personnelles,
   \item la bibliographie pour les pages web,
   \item et la bibliographie générale.
 \end{itemize}
 
-Elles sont définies au début du fichier \texttt{sommaire.tex}.
+Elles sont définies au début du fichier \mytt{sommaire.tex}.
 
-\begin{framed}
+\begin{framed}\vspace{-0.75em}
 \begin{verbatim}
 % Biblio pour les pages webs
 \newcites{web}{Pages web}
 % Biblio pour mes publications
 \newcites{mine}{Mes publications}
-\end{verbatim}\vspace{-0.5em}
+\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
-On utilise pour cela le package \texttt{multibib}, vous pouvez ajouter les votre ou renommer celles existantes, il ne faut pas oublier de modifier le fichier \texttt{Makefile} pour compiler les nouvelles bibliographies ou supprimer la compilation de celles que vous n'utiliser pas.
+On utilise pour cela le package \mytt{multibib}, vous pouvez en ajouter ou renommer celles existantes, il ne faut pas oublier de modifier le fichier \mytt{Makefile} pour compiler les nouvelles bibliographies ou supprimer la compilation de celles que vous n'utilisez pas.
 
-\paragraph{Les publications dans la bibliographie générale} doivent être citées avec la macro \texttt{\textbackslash cite\{key\}}.
+\paragraph{Les publications dans la bibliographie générale} doivent être citées avec la macro \mytt{\textbackslash cite\{key\}}.
 
 \begin{framed}
-\noindent\cite{T2012}\vspace{-0.5em}
+\noindent\cite{T2012}\vspace{-0.75em}
 \begin{verbatim}\cite{T2012}\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
-\paragraph{Les publications pour la section pages web} doivent être citées avec la macro \texttt{\textbackslash citeweb\{key\}}.
+\paragraph{Les publications pour la section pages web} doivent être citées avec la macro \mytt{\textbackslash citeweb\{key\}}.
 
 \begin{framed}
-\noindent\citeweb{AC9} \vspace{-0.5em}
+\noindent\citeweb{AC9} \vspace{-0.75em}
 \begin{verbatim}\citeweb{AC9}\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
-\paragraph{Les publications pour la section correspondant à vos publications} doivent être citées avec la macro \texttt{\textbackslash citemine\{key\}}.
+\paragraph{Les publications pour la section correspondant à vos publications} doivent être citées avec la macro \mytt{\textbackslash citemine\{key\}}.
 
 \begin{framed}
-\noindent\citemine{DHHS2011} \vspace{-0.5em}
+\noindent\citemine{DHHS2011} \vspace{-0.75em}
 \begin{verbatim}\citemine{DHHS2011}\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
-Pour référencer vos publications par la suite, vous pouvez utiliser la macro \texttt{\textbackslash cite} ou la macro \texttt{\textbackslash citemine}.
-Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscript vous pouvez soit la citer avec \texttt{\textbackslash cite} ou l'insérer avec \texttt{\textbackslash nocite}. \nocite{DHHS2011} 
+Pour référencer vos publications par la suite, vous pouvez utiliser la macro \mytt{\textbackslash cite} ou la macro \mytt{\textbackslash citemine}.
+Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscript vous pouvez soit la citer avec \mytt{\textbackslash cite} ou l'insérer avec \mytt{\textbackslash nocite}. \nocite{DHHS2011} 
 
-Attention si vous utilisez un style de bibliographie numérotant les références, vous aurez des problèmes de numérotation si une publication est à la fois citée en utilisant la macro \texttt{\textbackslash cite} et la macro \texttt{\textbackslash citemine}.
+Attention si vous utilisez un style de bibliographie numérotant les références, vous aurez des problèmes de numérotation si une publication est à la fois citée en utilisant la macro \mytt{\textbackslash cite} et la macro \mytt{\textbackslash citemine}.
 
 
 Chaque bibliographie peut ensuite être affichée en utilisant les lignes suivantes :
 
-\begin{framed}
+\begin{framed}\vspace{-0.75em}
 \begin{verbatim}\bibliographystyle<s>{apalike}
 \bibliography<s>{biblio}
-\end{verbatim}\vspace{-0.5em}
+\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
 où \verb|<s>| correspond à la bibliographie que l'on veut afficher.
+
+Pour redéfinir l'affichage, il suffit de redéfinir le \verb|\bibtitle|, pour que ce soit un chapitre utilisez la commande suivante :
+
+\begin{framed}\vspace{-0.75em}
+\begin{verbatim}\renewcommand{\bibtitle}{\bibchapter}
+\end{verbatim}\vspace{-0.75em}
+\end{framed}
+
+Pour que ça apparaisse comme une section, utilisez la commande suivante :
+
+\begin{framed}\vspace{-0.75em}
+\begin{verbatim}\renewcommand{\bibtitle}{\section*{\refname}}
+\end{verbatim}\vspace{-0.75em}
+\end{framed}
 
 
 \section{Exemples d'utilisation}
