@@ -6,7 +6,7 @@ La macro `\hdr` permet de spécifier que le document est pour une habilitation �
 
 N'hésitez pas à poster des issues ou faire des pull-request pour améliorer ce modèle.
 
-=========================
+---
 
 You'll find here a Ph.D. thesis template in latex with the [first page requested by Université Côte d'Azur](https://bu.univ-cotedazur.fr/fr/utiliser-nos-services/deposer-sa-these-ou-son-memoire/deposer-sa-these-de-doctorat).
 
