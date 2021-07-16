@@ -505,11 +505,17 @@
 			\if\@president\@empty\else{\bf \presidentname\xspace du jury}\\[0.1cm]
 			\@president, \@presidentAdr\\[0.3cm]\fi
 			{\bf \rapporteursname}\\[0.1cm]
-			\@rappoteurs\\[-0.2cm]
+			\@rapporteurs\\[-0.2cm]
 			{\bf \examinateursname}\\[0.1cm]
 			\@examinateurs\\[-0.2cm]
-			{\bf \invitesname}\\[0.1cm]
-			\@invites
+      {\bf \directeurname}\\[0.1cm]
+			\@directeurThese\\[0.2cm]
+			\if\@codirecteurThese\@empty\else{\bf \codirecteurname}\\[0.1cm]
+			\@codirecteurThese\\[0.2cm]\fi
+			\if\@coencadrantThese\@empty\else{\bf \coencadrantname}\\[0.1cm]
+			\@coencadrantThese\\[0.2cm]\fi
+			\if\@invites\@empty\else{\bf \invitesname}\\[0.1cm]
+			\@invites\\[0.2cm]\fi
 			}
 			\vspace*{2.cm}
 			\begin{center}
@@ -1589,7 +1595,7 @@
 			\def\@coFinanceursLogo{\@empty}
 			\def\@president{\@empty}
 			\gdef\@presidentAdr{\@empty}
-			\gdef\@rappoteurs{}
+			\gdef\@rapporteurs{}
 			\gdef\@examinateurs{}
 			\gdef\@invites{}
 			\def\creerPresident #1/#2+{\gdef\@president{#1}\gdef\@presidentAdr{#2}}
@@ -1597,12 +1603,12 @@
 			\newcommand{\presidentname}{Président}
 			\newcommand{\examinateursname}{Examinateurs}
 			\newcommand{\invitesname}{Membres invités}
-			\newcommand{\directeurname}{{\itshape Directeur de thèse}}
-			\newcommand{\codirecteurname}{{\itshape Co-directeur de thèse}}
-			\newcommand{\coencadrantname}{{\itshape Co-encadrant de thèse}}
-			\newcommand{\directeur}[1]{\gdef\@directeurThese{#1}}
-			\newcommand{\codirecteur}[1]{\gdef\@codirecteurThese{#1}}
-			\newcommand{\coencadrant}[1]{\gdef\@coencadrantThese{#1}}
+			\newcommand{\directeurname}{{Directeur de thèse}
+			\newcommand{\codirecteurname}{Co-directeur de thèse}
+			\newcommand{\coencadrantname}{Co-encadrant de thèse}
+			\newcommand{\directeur}[3]{\gdef\@directeurThese{#1, #2, #3}}
+			\newcommand{\codirecteur}[3]{\gdef\@codirecteurThese{#1, #2, #3}}
+			\newcommand{\coencadrant}[3]{\gdef\@coencadrantThese{#1, #2, #3}}
 			\newcommand{\cotutelle}[1]{\gdef\@coTutelle{#1}}
 			\newcommand{\cotutellelogo}[1]{\gdef\@coTutelleLogo{#1}}
 			\newcommand{\cofinanceurslogo}[1]{\gdef\@coFinanceursLogo{#1}}
@@ -1612,7 +1618,7 @@
 				\global\@juryPresenttrue%
 				\def\rapporteur##1##2##3{\stepcounter{nbRapporteurs}
 					##1, ##2, ##3 \\
-					\g@addto@macro\@rappoteurs{##1, ##2, ##3 \\}
+					\g@addto@macro\@rapporteurs{##1, ##2, ##3 \\}
 				}
 				\def\examinateur##1##2##3{\stepcounter{nbExaminateurs}
 					##1, ##2, ##3 \\
@@ -1628,8 +1634,9 @@
 						}{\end{tabular}\end{lrbox}%
 				\global\setbox\@juryBox=\vbox{\copy\@juryBoxA}}
 			\newcommand{\juryDefaut}{%
-				\def\directeur##1{\gdef\@directeurThese{##1}}
-				\def\codirecteur##1{\gdef\@codirecteurThese{##1}}
+        \def\directeur##1##2##3{\gdef\@directeurThese{##1##2##3}}
+        \def\codirecteur##1##2##3{\gdef\@codirecteurThese{##1##2##3}}
+        \def\coencadrant##1##2##3{\gdef\@coencadrantThese{##1##2##3}}
 				\def\president##1{\gdef\@president{##1}}
 				\def\rapporteur##1##2##3{\ifnum\value{nbRapporteurs}>0 \else%
 					\hbox to 2.8cm{\rapporteursname\hss:}\fi \stepcounter{nbRapporteurs}
