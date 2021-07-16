@@ -517,7 +517,7 @@
 			\if\@invites\@empty\else{\bf \invitesname}\\[0.1cm]
 			\@invites\\[0.2cm]\fi
 			}
-			\vspace*{2.cm}
+			\vfill
 			\begin{center}
 				\makebox[5cm]{\hrulefill}\par
 				Université Côte d'Azur
@@ -1603,7 +1603,7 @@
 			\newcommand{\presidentname}{Président}
 			\newcommand{\examinateursname}{Examinateurs}
 			\newcommand{\invitesname}{Membres invités}
-			\newcommand{\directeurname}{{Directeur de thèse}
+			\newcommand{\directeurname}{Directeur de thèse}
 			\newcommand{\codirecteurname}{Co-directeur de thèse}
 			\newcommand{\coencadrantname}{Co-encadrant de thèse}
 			\newcommand{\directeur}[3]{\gdef\@directeurThese{#1, #2, #3}}
