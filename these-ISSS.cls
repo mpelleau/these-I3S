@@ -366,7 +366,11 @@
 	\if@hdr
 		HABILITATION À DIRIGER\\[0.5cm]LES RECHERCHES
 	\else
-		THÈSE DE DOCTORAT
+		\if@master
+			MÉMOIRE DE MASTER
+		\else
+			THÈSE DE DOCTORAT
+		\fi
 	\fi
 }
 
@@ -374,12 +378,21 @@
 	\if@hdr
 		{\bfseries Présentée en vue de l’obtention de\\l'habilitation à diriger les recherche\\en} \@discipline\\
 	\else
-		{\bfseries Présentée en vue de l’obtention\\du grade de docteur en} \@discipline\\
-		{\bfseries d'}Université Côte d'Azur
-		\if\@coTutelle\@empty\else{\\\bfseries et de} \@coTutelle\fi\\[0.2cm]
-		{\bfseries Dirigée par :} \@directeurThese\\
-		\if\@codirecteurThese\@empty\else{\bfseries Co-dirigée par :} \@codirecteurThese\\\fi
-		\if\@coencadrantThese\@empty\else{\bfseries Co-encadrée par :} \@coencadrantThese\\\fi
+		\if@master
+			{\bfseries Présentée en vue de l’obtention du\\diplôme de master\\en} \@discipline\\
+			{\bfseries d'}Université Côte d'Azur
+			\if\@coTutelle\@empty\else{\\\bfseries et de} \@coTutelle\fi\\[0.2cm]
+			{\bfseries Stage encadré par :}\\\@directeurThese\\
+			\if\@codirecteurThese\@empty\else\@codirecteurThese\\\fi
+			\if\@coencadrantThese\@empty\else\@coencadrantThese\\\fi
+		\else
+			{\bfseries Présentée en vue de l’obtention\\du grade de docteur en} \@discipline\\
+			{\bfseries d'}Université Côte d'Azur
+			\if\@coTutelle\@empty\else{\\\bfseries et de} \@coTutelle\fi\\[0.2cm]
+			{\bfseries Dirigée par :} \@directeurThese\\
+			\if\@codirecteurThese\@empty\else{\bfseries Co-dirigée par :} \@codirecteurThese\\\fi
+			\if\@coencadrantThese\@empty\else{\bfseries Co-encadrée par :} \@coencadrantThese\\\fi
+		\fi
 	\fi
 	\if\@date\@empty\else{{\bfseries Soutenue le :} \@date}\fi
 }
@@ -445,20 +458,27 @@
 				{\fontsize{14pt}{14pt}\selectfont \@laboratoire}
 			\end{minipage}\\[1.cm]
 			
-			%%%% Bloc Thèse
 			\hspace*{-1.cm}
-			\begin{minipage}[t]{7.cm}
-				\fontsize{11pt}{14pt}\selectfont
-				\@bloc
-			\end{minipage}\hspace*{0.5cm}
-			%%%% Bloc Jury
-			\begin{minipage}[t]{7.5cm}
-				\fontsize{11pt}{14pt}\selectfont
-				{\bfseries Devant le jury, composé de :}
-				
-				\hspace*{-0.3cm}\@leJury
-
-			\end{minipage}\\[1cm]
+			\if@master
+				\begin{minipage}[t]{\linewidth}
+					\fontsize{11pt}{14pt}\selectfont
+					\@bloc
+				\end{minipage}\hspace*{0.5cm}
+			\else
+				%%%% Bloc Thèse
+				\begin{minipage}[t]{7.cm}
+					\fontsize{11pt}{14pt}\selectfont
+					\@bloc
+				\end{minipage}\hspace*{0.5cm}
+				%%%% Bloc Jury
+				\begin{minipage}[t]{7.5cm}
+					\fontsize{11pt}{14pt}\selectfont
+					{\bfseries Devant le jury, composé de :}
+					
+					\hspace*{-0.3cm}\@leJury
+				\end{minipage}\\[1cm]
+			\fi
+			
 			
 			\vfill
 			\hspace*{-2.cm}
@@ -475,31 +495,37 @@
 		% Troisième page																	%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\hoffset=.7cm
+		{\textheight=0.8\paperheight
 		\cleardoublepage % Création de la page de titre
 		\mbox{ }
-		%  \rput(5.9,-3){ \includegraphics[width=\@blason@width]{\@blason@name}}
-		%  \rput(5.9,-5){\normalsize\it favet neptunus eunti}
-		\hspace*{-1.1cm}\begin{minipage}{14cm}
-			\begin{center}
-				\Large\bf
-				\vspace*{2.5cm}
-				{%
-					\scshape\@titre%
-					\if@soustitre{\\[.5cm]\large}%
-				}\par
-				\vspace*{.25cm}\par
-				\rule{3cm}{.1mm}\par
-				\vspace*{.25cm}
-				\Large\bf
-				\textit{\@title}
-				\if@subtitle{\\[.3cm]\large\bfseries\itshape} \par
-				\vspace{1.5cm}
-				\@firstname\ \IFmiddlename \@lastname
-				\par
-				\vspace*{1cm}
-				{\Huge $\triangleright$\hspace{-3pt}$\triangleleft$}\par
-			\end{center}
-			\vspace*{2.cm}
+		\hspace*{-1.1cm}
+		\begin{center}
+			\Large\bf
+			{%
+				\scshape\@titre%
+				\if@soustitre{\\[.5cm]\large}%
+			}\par
+			\vspace*{.25cm}\par
+			\rule{3cm}{.1mm}\par
+			\vspace*{.25cm}
+			\Large\bf
+			\textit{\@title}
+			\if@subtitle{\\[.3cm]\large\bfseries\itshape} \par
+			\vspace{1.5cm}
+			\@firstname\ \IFmiddlename \@lastname
+			\par
+			\vspace*{1cm}
+			{\Huge $\triangleright$\hspace{-3pt}$\triangleleft$}\par
+		\end{center}
+		\vspace*{2.cm}
+		\if@master
+			{\Large\bfseries Stage encadré par :}\\[0.5cm]
+			{\large
+			\@directeurThese\\[0.1cm]
+			\if\@codirecteurThese\@empty\else\@codirecteurThese\\[0.1cm]\fi
+			\if\@coencadrantThese\@empty\else\@coencadrantThese\\[0.1cm]\fi
+			}
+		\else
 			{\Large\bf Jury :}\\[0.5cm]
 			{\large
 			\if\@president\@empty\else{\bf \presidentname\xspace du jury}\\[0.1cm]
@@ -508,22 +534,25 @@
 			\@rapporteurs\\[-0.2cm]
 			{\bf \examinateursname}\\[0.1cm]
 			\@examinateurs\\[-0.2cm]
-      {\bf \directeurname}\\[0.1cm]
-			\@directeurThese\\[0.2cm]
-			\if\@codirecteurThese\@empty\else{\bf \codirecteurname}\\[0.1cm]
-			\@codirecteurThese\\[0.2cm]\fi
-			\if\@coencadrantThese\@empty\else{\bf \coencadrantname}\\[0.1cm]
-			\@coencadrantThese\\[0.2cm]\fi
-			\if\@invites\@empty\else{\bf \invitesname}\\[0.1cm]
-			\@invites\\[0.2cm]\fi
+			\if@hdr
+			\else
+      			{\bf \directeurname}\\[0.1cm]
+				\@directeurThese\\[0.2cm]
+				\if\@codirecteurThese\@empty\else{\bf \codirecteurname}\\[0.1cm]
+				\@codirecteurThese\\[0.2cm]\fi
+				\if\@coencadrantThese\@empty\else{\bf \coencadrantname}\\[0.1cm]
+				\@coencadrantThese\\[0.2cm]\fi
+				\if\@invites\@empty\else{\bf \invitesname}\\[0.1cm]
+				\@invites\\[0.2cm]\fi
+			\fi
 			}
-			\vfill
-			\begin{center}
-				\makebox[5cm]{\hrulefill}\par
-				Université Côte d'Azur
-			\end{center}
-		\end{minipage}
-		
+		\fi
+		\vfill
+		\begin{center}
+			\makebox[5cm]{\hrulefill}\par
+			Université Côte d'Azur
+		\end{center}
+		}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		% Quatrième page															%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1586,6 +1615,8 @@
 			\@juryPresentfalse
 			\newif\if@hdr
 			\@hdrfalse
+			\newif\if@master
+			\@masterfalse
 			\def\@inconnu{\hbox to 3cm{\hrulefill}}
 			\def\@directeurThese{\@empty}
 			\def\@codirecteurThese{\@empty}
@@ -1613,6 +1644,7 @@
 			\newcommand{\cotutellelogo}[1]{\gdef\@coTutelleLogo{#1}}
 			\newcommand{\cofinanceurslogo}[1]{\gdef\@coFinanceursLogo{#1}}
 			\newcommand{\hdr}{\global\@hdrtrue}
+			\newcommand{\master}{\global\@mastertrue}
 			\newenvironment{jury}[1][+]{%
 				\if#1+\else \creerPresident #1+\fi%
 				\global\@juryPresenttrue%
