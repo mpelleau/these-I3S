@@ -1702,38 +1702,38 @@
 				
 				
 				
-				\def\enddocument{%
-					\@enddocumenthook
-					\@checkend{document}%
-					\clearpage
-					\begingroup
-					\if@filesw
-					\immediate\closeout\@mainaux
-					\immediate\closeout\@lblout
-					\let\@setckpt\@gobbletwo
-					\let\@newl@bel\@testdef
-					\@tempswafalse
-					\makeatletter \input\jobname.aux
-					\fi
-					\@dofilelist
-					\ifdim \font@submax >\fontsubfuzz\relax
-					\@font@warning{Size substitutions with differences\MessageBreak
-						up to \font@submax\space have occurred.\@gobbletwo}%
-					\fi
-					\@defaultsubs
-					\@refundefined
-					\if@filesw
-					\ifx \@multiplelabels \relax
-					\if@tempswa
-					\@latex@warning@no@line{Label(s) may have changed.
-						Rerun to get cross-references right}%
-					\fi
-					\else
-					\@multiplelabels
-					\fi
-					\fi
-					\endgroup
-					\deadcycles\z@\@@end}
+%				\enddocument{%
+%					\@enddocumenthook
+%					\@checkend{document}%
+%					\clearpage
+%					\begingroup
+%					\if@filesw
+%					\immediate\closeout\@mainaux
+%					\immediate\closeout\@lblout
+%					\let\@setckpt\@gobbletwo
+%					\let\@newl@bel\@testdef
+%					\@tempswafalse
+%					\makeatletter \input\jobname.aux
+%					\fi
+%					\@dofilelist
+%					\ifdim \font@submax >\fontsubfuzz\relax
+%					\@font@warning{Size substitutions with differences\MessageBreak
+%						up to \font@submax\space have occurred.\@gobbletwo}%
+%					\fi
+%					\@defaultsubs
+%					\@refundefined
+%					\if@filesw
+%					\ifx \@multiplelabels \relax
+%					\if@tempswa
+%					\@latex@warning@no@line{Label(s) may have changed.
+%						Rerun to get cross-references right}%
+%					\fi
+%					\else
+%					\@multiplelabels
+%					\fi
+%					\fi
+%					\endgroup
+%					\deadcycles\z@\@@end}
 				
 				
 				% Page de résumé et de mots-clés
