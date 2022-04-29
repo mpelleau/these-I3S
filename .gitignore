@@ -15,7 +15,14 @@
 *.synctex.gz
 *.toc
 
+
+### Emacs ###
+
+## AUCTeX auto folder
+/auto/
+
 ## Latexmk
 *.fdb_latexmk
 *.fls
+
 
