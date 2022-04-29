@@ -7,11 +7,11 @@ Cette classe \LaTeX\ est basée sur la classe \mytt{these-LINA} écrite par Fré
 Pour les autres ED, il suffit de supprimer le fichier \mytt{visuel.jpg} dans le dossier \mytt{img/} et de renommer le visuel correspondant à l'ED en \mytt{visuel.jpg}.
 
 \section{Organisation}
-  
+
   Pour compiler ce document vous pouvez utiliser le \mytt{Makefile}. Sinon, on m'a dit dans l'oreillette qu'il existait des éditeurs tel que Texmaker qui gèrent eux même la compilation.
 
   \subsection{Fichier principal et informations}
-  Le fichier principal est le fichier \mytt{sommaire.tex}, la classe du document est \mytt{these-ISSS}. 
+  Le fichier principal est le fichier \mytt{sommaire.tex}, la classe du document est \mytt{these-ISSS}.
   Différentes options sont possibles :
   \begin{itemize}
     \item \mytt{draft} pour une version brouillon du manuscrit, les liens sont désactivés et en noir, et les étiquettes des références sont affichées ;
@@ -21,22 +21,22 @@ Pour les autres ED, il suffit de supprimer le fichier \mytt{visuel.jpg} dans le 
     \item \mytt{oneside} pour une impression recto et \mytt{twoside} (par défaut) pour une impression recto-verso ;
     \item \mytt{notitlepage} pour un manuscrit sans page de titre et \mytt{titlepage} (par défaut) avec page de titre.
   \end{itemize}
-  
+
   Le titre du document ainsi que les informations correspondant au laboratoire, une co-tutelle ou les co-financeurs se trouvent dans le fichier \texttt{titreEtInfos.tex}.
-  
+
   Les informations relatives au jury, au directeur, co-directeur et co-encadrant se trouvent dans le fichier \mytt{jury.tex}.
-  
+
   Le résumée et les mots-clés en français et en anglais se trouvent dans le fichier \mytt{resume.tex}.
-  
+
   \subsection{Les chapitres}
-  À l'exception des remerciements et des notations, chaque chapitre a son dossier. 
+  À l'exception des remerciements et des notations, chaque chapitre a son dossier.
   Ce n'est pas nécessaire mais c'est plus facile pour s'y retrouver après, et dans chaque dossier il y a le fichier principal, et il peut y avoir d'autres fichiers ou dossiers (par exemple un dossier \mytt{img/}).
-  
+
   Les chapitres sont ajoutés au document principal à l'aide des macros \verb|\input| ou \verb|\import|. À noter que la macro \verb|\include| ajoute forcément une nouvelle page et ne permet pas des inclusions en cascade, son utilisation est à éviter.
-  
+
   \subsection{Les paquets}
-  Les ajouts de paquets sont dans le fichier \mytt{mesmacros.sty}. Vous pouvez supprimer ou ajouter dans ce fichier d'autres paquets. 
-  
+  Les ajouts de paquets sont dans le fichier \mytt{mesmacros.sty}. Vous pouvez supprimer ou ajouter dans ce fichier d'autres paquets.
+
   Ce fichier utilise les fichiers suivant :
   \begin{itemize}
     \item \mytt{francisation.sty} dans lequel se trouvent les traductions des différents noms de section ou listes ;
@@ -68,6 +68,10 @@ Elles sont définies au début du fichier \mytt{sommaire.tex}.
 
 On utilise pour cela le package \mytt{multibib}, vous pouvez en ajouter ou renommer celles existantes, il ne faut pas oublier de modifier le fichier \mytt{Makefile} pour compiler les nouvelles bibliographies ou supprimer la compilation de celles que vous n'utilisez pas.
 
+Par défaut, les bibliographies utilisent le package qui cite correctement des pages web.
+Le package impose le style \mytt{apacite} qui utilise un système auteur-date.
+Pour changer de style de la bibliographie, vous devrez probablement supprimer le package.
+
 \paragraph{Les publications dans la bibliographie générale} doivent être citées avec la macro \mytt{\textbackslash cite\{key\}}.
 
 \begin{framed}
@@ -90,15 +94,16 @@ On utilise pour cela le package \mytt{multibib}, vous pouvez en ajouter ou renom
 \end{framed}
 
 Pour référencer vos publications par la suite, vous pouvez utiliser la macro \mytt{\textbackslash cite} ou la macro \mytt{\textbackslash citemine}.
-Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscript vous pouvez soit la citer avec \mytt{\textbackslash cite} ou l'insérer avec \mytt{\textbackslash nocite}. \nocite{DHHS2011} 
+Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscript vous pouvez soit la citer avec \mytt{\textbackslash cite} ou l'insérer avec \mytt{\textbackslash nocite}. \nocite{DHHS2011}
 
 Attention si vous utilisez un style de bibliographie numérotant les références, vous aurez des problèmes de numérotation si une publication est à la fois citée en utilisant la macro \mytt{\textbackslash cite} et la macro \mytt{\textbackslash citemine}.
+
 
 
 Chaque bibliographie peut ensuite être affichée en utilisant les lignes suivantes :
 
 \begin{framed}\vspace{-0.75em}
-\begin{verbatim}\bibliographystyle<s>{apalike}
+\begin{verbatim}\bibliographystyle<s>{apacite}
 \bibliography<s>{biblio}
 \end{verbatim}\vspace{-0.75em}
 \end{framed}
@@ -126,11 +131,15 @@ Des exemples d'utilisation des différents paquets sont présents dans ce docume
 
 
 Des citations pour compléter les bibliographies \citemine{HHSD2011,HHSD2012}, \citeweb{AC9}.
- 
 
-  
+
+Des citations pour compléter les bibliographies \citeA{HHSD2011}.
+
+\citeAweb{AC9}.
+
+Une référence citée avec \mytt{\textbackslash citemine} \citemine{DHHS2011} et \mytt{\textbackslash cite} \cite{DHHS2011} pour voir.
+
+
 \renewcommand{\bibtitle}{\section*{\refname}}
-\bibliographystylemine{apalike}
+\bibliographystylemine{apacite}
 \bibliographymine{biblio}
-
-

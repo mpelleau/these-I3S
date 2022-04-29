@@ -1,10 +1,10 @@
-
 \documentclass{these-ISSS} % Pour la version finale
 %\documentclass[draft]{these-ISSS} % Pour une version brouillon
 %\documentclass[gray]{these-ISSS} % Pour une version en grayscale
 
 \usepackage{mesmacros}
 \usepackage{import}
+\usepackage{apacite}
 \usepackage{lipsum}
 
 % Biblio pour les pages webs
@@ -18,10 +18,10 @@
 
 
 \begin{document}
-  \pagenumbering{roman}  
-    
+  \pagenumbering{roman}
+
   \input{jury}
-  
+
   \maketitle
 
   \begin{dedicace}
@@ -29,9 +29,9 @@
   \end{dedicace}
 
   \cleardoublepage
-  
+
   \input{resume}
-  
+
   \input{remerciements}
 
   \tableofcontents
@@ -48,17 +48,17 @@
   \Part{Contributions}
   \import{chapitre4/}{chapitre4}
   \import{chapitre5/}{chapitre5}
-  
+
   \input{conclusion/conclusion}
 
   \backmatter
-  
+
   \renewcommand{\bibtitle}{\bibchapter}
-  \bibliographystyle{apalike}
+  \bibliographystyle{apacite}
   \bibliography{biblio}
-  
-  \renewcommand{\bibtitle}{\section*{\refname}}  
-  \bibliographystyleweb{plain}
+
+  \renewcommand{\bibtitle}{\section*{\refname}}
+  \bibliographystyleweb{apacite}
   \bibliographyweb{biblio}
 
   \listoffigures
