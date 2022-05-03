@@ -19,7 +19,7 @@
 ### Emacs ###
 
 ## AUCTeX auto folder
-/auto/
+auto/
 
 ## Latexmk
 *.fdb_latexmk
