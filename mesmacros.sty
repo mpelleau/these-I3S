@@ -73,19 +73,27 @@
 \clubpenalty=10000
 \raggedbottom
 
+\PassOptionsToPackage{bookmarks = true, bookmarksnumbered = true, breaklinks = true, colorlinks = true, citecolor = citeColor, linkcolor = linkColor}{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF/A generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a-3b]{pdfx}
+\usepackage{xmpincl}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Coloration des liens
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, breaklinks=true, colorlinks=true, citecolor=citeColor, linkcolor=linkColor]{hyperref}
-\usepackage{bookmark}
+\usepackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tables des matières à chaque chapitre
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{minitoc}
 \dominitoc[n]
-\dominilof
-\dominilot
+% \dominilof % décommenter pour avoir des listes de figures à chaque chapitre
+% \dominilot % décommenter pour avoir des listes de tables à chaque chapitre
 \setcounter{minitocdepth}{3}
 \renewcommand{\mtctitle}{Sommaire}

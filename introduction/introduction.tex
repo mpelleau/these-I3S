@@ -46,6 +46,20 @@ Pour les autres ED, il suffit de supprimer le fichier \mytt{visuel.jpg} dans le 
     \item \mytt{algo.sty} pour les algorithmes en français avec le package \mytt{algorithmic} et \mytt{colorationSyntaxique.sty} pour la coloration syntaxique des algorithmes avec le package \mytt{lstlistings}.
   \end{itemize}
 
+  \subsection{PDF/A}
+
+  Le document est désormais compilé pour êre compatible avec la norme PDF/A-3B. 
+  Les modifications effectuées ont été faites à partir des instructions trouvées ici : \url{https://www.mathstat.dal.ca/~selinger/pdfa/}.
+
+  Si cela ne vous convient pas vous pouvez commenter ou modifier les lignes 82 du fichier \mytt{mesmacros.sty} :
+
+  \begin{framed}\vspace{-0.75em}
+    \begin{verbatim}
+\usepackage[a-3b]{pdfx}\end{verbatim}\vspace{-0.75em}
+  \end{framed}
+
+  Si vous voulez conserver cette norme veillez à modifier les informations contenues dans le fichier \mytt{sommaire.xmpdata}.
+
 \section{Citations}
 
 Dans ce document il y a 3 bibliographies :
