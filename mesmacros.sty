@@ -77,15 +77,21 @@
 % Coloration des liens
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, breaklinks=true, colorlinks=true, citecolor=citeColor, linkcolor=linkColor]{hyperref}
+\usepackage[bookmarks = true, bookmarksnumbered = true, breaklinks = true, colorlinks = true, citecolor = citeColor, linkcolor = linkColor]{hyperref}
+
 \usepackage{bookmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF/A generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage{xmpincl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tables des matières à chaque chapitre
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{minitoc}
-\dominitoc[n]
-\dominilof
-\dominilot
 \setcounter{minitocdepth}{3}
+\dominitoc[n]
+
 \renewcommand{\mtctitle}{Sommaire}
