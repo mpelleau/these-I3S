@@ -1063,9 +1063,9 @@
 					\setcounter{section}{0}%
 					\renewcommand\@chapapp{\appendixname}%
 					\renewcommand\thechapter{\@Alph\c@chapter}
-					\renewcommand\thesection{\@Alph\c@section}
-					\renewcommand\thesubsection{\@Alph\c@section.\@arabic\c@subsection}}
-				
+					\renewcommand\thesection{\@Alph\c@chapter.\@arabic\c@section}
+					\renewcommand\thesubsection{\@Alph\c@chapter.\@arabic\c@section.\@arabic\c@subsection}}
+
 				\setlength\arraycolsep{5\p@}
 				\setlength\tabcolsep{6\p@}
 				\setlength\arrayrulewidth{.4\p@}
