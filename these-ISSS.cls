@@ -998,10 +998,12 @@
 				%\renewcommand\labelitemii{\normalfont\bfseries \textendash}
 				%\renewcommand\labelitemiii{\textasteriskcentered}
 				%\renewcommand\labelitemiv{\textperiodcentered}
+				\@ifundefined{description}{
 				\newenvironment{description}
 				{\list{}{\labelwidth\z@ \itemindent-\leftmargin
 						\let\makelabel\descriptionlabel}}
 				{\endlist}
+				}{}
 				\newcommand*\descriptionlabel[1]{\hspace\labelsep
 					\normalfont\bfseries #1}
 				\newenvironment{verse}
@@ -1333,7 +1335,7 @@
 			\hrule\@width.4\columnwidth
 			\kern2.6\p@}
 		\@addtoreset{footnote}{chapter}
-		\newcommand\@makefntext[1]{%
+		\providecommand\@makefntext[1]{%
 			\parindent 1em%
 			\noindent
 			\hb@xt@1.8em{\hss\@makefnmark}#1}
