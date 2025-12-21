@@ -44,3 +44,28 @@ jobs:
         with:
           name: PDF-miktex-windows
           path: sommaire.pdf
+  build-on-macos-mactex:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MacTeX
+        uses: gerlero/brew-install@v1
+        with:
+          packages: mactex
+          cache: true
+          type: cask
+      - name: Add MacTex to PATH
+        run: |
+          echo "/Library/TeX/texbin" >> $GITHUB_PATH
+      - name: Setup tlmgr & Auto-Installer
+        run: |
+          sudo tlmgr update --self
+          sudo tlmgr install latexmk
+      - name: Compile with Auto-Install
+        run: |
+          latexmk -pdf -pdflatex="pdflatex -halt-on-error -interaction=nonstopmode" sommaire.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF-mactex-macos
+          path: sommaire.pdf
