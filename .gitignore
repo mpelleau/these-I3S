@@ -26,3 +26,6 @@ auto/
 *.fls
 
 
+# Build files
+*.pdf
+*.xmpi
