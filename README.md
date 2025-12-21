@@ -10,6 +10,10 @@ Les macros `\hdr` et `\master` permettent de spécifier que le document est resp
 
 :point_right: N'hésitez pas à poster des issues ou faire des pull-request pour améliorer ce modèle.
 
+### Installation des outils d'édition et de compilation en local
+
+Le template de thèse est potentiellement trop lourd pour être compilé efficacement avec overleaf (ou l'instance sharelatex locale). Nous montrons comment installer les logiciels pour éditer et compiler votre thèse sur votre PC local [sur la page de documentation dédiée](doc/install_local_toolchain.md).
+
 ### Validation automatique du code LaTeX
 
 Une pipeline GitHub Actions compile automatiquement le projet à chaque nouveau commit. Les tests de build sont lancés sur les plateformes suivantes:
@@ -53,6 +57,10 @@ The macros `\hdr` and `\master` specify that the thesis is respectively for a *h
 
 :point_right: Do not hesitate to post issues or pull requests to improve this model.
 
+### Installing editing and compilation tools locally
+
+The thesis template is potentially too large to be compiled efficiently with Overleaf (or the local ShareLaTeX instance). We show you how to install the software to edit and compile your thesis on your local PC [in the dedicated documentation page](doc/install_local_toolchain.md).
+
 ### Automatic LaTeX code validation
 
 A GitHub Actions pipeline automatically compiles the project with each new commit. Build tests are run on the following platforms:
@@ -64,6 +72,7 @@ A GitHub Actions pipeline automatically compiles the project with each new commi
 This guarantees that the LaTeX code compiles correctly with each change on all these platforms, provided the jobs are successful!
 
 ### Automatic generation of compiled PDFs
+<a id="automatic_generation_pdf"></a>
 
 Once the jobs are complete, you can download the compiled PDFs on each platform directly from the GitHub Actions artifacts:
 
