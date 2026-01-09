@@ -1,0 +1,90 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build-on-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: sommaire.tex
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: PDF-pdflatex-ubuntu
+          path: sommaire.pdf
+  build-on-windows-miktex:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install MiKTeX
+        run: |
+          choco install miktex --no-progress
+          echo "C:\Program Files\MiKTeX\miktex\bin\x64" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8
+      - name: Configure MikTeX
+        run: |
+          initexmf --admin --verbose --set-config-value=[MPM]AutoInstall=1
+          initexmf --set-config-value=[MPM]AutoInstall=1
+          miktex --admin --verbose packages update-package-database
+          miktex --admin --verbose packages update
+          miktex --verbose packages update
+          miktex --admin --verbose packages install cm-super
+          miktex --admin --verbose fndb refresh
+          initexmf --admin --verbose --update-fndb
+          initexmf --admin --verbose --mklinks --force
+          updmap --admin
+      - name: Compile PDF
+        run: latexmk.exe -pdf -pdflatex="pdflatex -halt-on-error -interaction=nonstopmode" sommaire.tex
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: PDF-miktex-windows
+          path: sommaire.pdf
+  build-on-macos-mactex:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MacTeX
+        uses: gerlero/brew-install@v1
+        with:
+          packages: mactex
+          cache: true
+          type: cask
+      - name: Add MacTex to PATH
+        run: |
+          echo "/Library/TeX/texbin" >> $GITHUB_PATH
+      - name: Setup tlmgr & Auto-Installer
+        run: |
+          sudo tlmgr update --self
+          sudo tlmgr install latexmk
+      - name: Compile with Auto-Install
+        run: |
+          latexmk -pdf -pdflatex="pdflatex -halt-on-error -interaction=nonstopmode" sommaire.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF-mactex-macos
+          path: sommaire.pdf
+  build-valid-cines-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pdf conversion tool
+        run: |
+          sudo apt-get install -y ghostscript
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: sommaire.tex
+      - name: Convert to valid CINES format
+        run: |
+          gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=sommaire_archive.pdf sommaire.pdf
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: PDF-valid-cines-archive
+          path: sommaire_archive.pdf
