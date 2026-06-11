@@ -6,59 +6,82 @@ Cette classe \LaTeX\ est basée sur la classe \mytt{these-LINA} écrite par Fré
 
 Pour les autres ED, il suffit de supprimer le fichier \mytt{visuel.jpg} dans le dossier \mytt{img/} et de renommer le visuel correspondant à l'ED en \mytt{visuel.jpg}.
 
-\section{Organisation}
+\section{Organisation}\label{sec:orga}
 
-  Pour compiler ce document vous pouvez utiliser le \mytt{Makefile}. Sinon, on m'a dit dans l'oreillette qu'il existait des éditeurs tel que Texmaker qui gèrent eux même la compilation.
+Pour compiler ce document, vous pouvez utiliser le \mytt{Makefile}. Sinon, on m'a dit dans l'oreillette qu'il existait des éditeurs tels que Texmaker qui gèrent eux-mêmes la compilation.
 
-  \subsection{Fichier principal et informations}
-  Le fichier principal est le fichier \mytt{sommaire.tex}, la classe du document est \mytt{these-ISSS}.
-  Différentes options sont possibles :
-  \begin{itemize}
-    \item \mytt{draft} pour une version brouillon du manuscrit, les liens sont désactivés et en noir, et les étiquettes des références sont affichées ;
-    \item \mytt{revision} qui ajoute à chaque première page de chapitre la date et l'heure de la dernière compilation en pied de page ;
-    \item \mytt{gray} pour une version en grayscale du manuscrit ;
-    \item \mytt{final} (par défaut) pour la version finale du manuscrit ;
-    \item \mytt{oneside} pour une impression recto et \mytt{twoside} (par défaut) pour une impression recto-verso ;
-    \item \mytt{notitlepage} pour un manuscrit sans page de titre et \mytt{titlepage} (par défaut) avec page de titre.
-  \end{itemize}
+\subsection{Fichier principal et informations}
+Le fichier principal est le fichier \mytt{sommaire.tex}, la classe du document est \mytt{these-ISSS}.
+Différentes options sont possibles :
+\begin{itemize}
+  \item \mytt{draft} pour une version brouillon du manuscrit, les liens sont désactivés et en noir, et les étiquettes des références sont affichées ;
+  \item \mytt{revision} qui ajoute à chaque première page de chapitre la date et l'heure de la dernière compilation en pied de page ;
+  \item \mytt{gray} pour une version en grayscale du manuscrit ;
+  \item \mytt{final} (par défaut) pour la version finale du manuscrit ;
+  \item \mytt{oneside} pour une impression recto et \mytt{twoside} (par défaut) pour une impression recto verso ;
+  \item \mytt{notitlepage} pour un manuscrit sans page de titre et \mytt{titlepage} (par défaut) avec page de titre.
+\end{itemize}
 
-  Le titre du document ainsi que les informations correspondant au laboratoire, une co-tutelle ou les co-financeurs se trouvent dans le fichier \texttt{titreEtInfos.tex}.
+Le titre du document ainsi que les informations correspondant au laboratoire, une co-tutelle ou les co-financeurs se trouvent dans le fichier \texttt{titreEtInfos.tex}.
 
-  Les informations relatives au jury, au directeur, co-directeur et co-encadrant se trouvent dans le fichier \mytt{jury.tex}.
+Les informations relatives au jury, au directeur, co-directeur et co-encadrant se trouvent dans le fichier \mytt{jury.tex}.
 
-  Le résumée et les mots-clés en français et en anglais se trouvent dans le fichier \mytt{resume.tex}.
+Le résumé et les mots-clés en français et en anglais se trouvent dans le fichier \mytt{resume.tex}.
 
-  \subsection{Les chapitres}
-  À l'exception des remerciements et des notations, chaque chapitre a son dossier.
-  Ce n'est pas nécessaire mais c'est plus facile pour s'y retrouver après, et dans chaque dossier il y a le fichier principal, et il peut y avoir d'autres fichiers ou dossiers (par exemple un dossier \mytt{img/}).
+\subsection{Les chapitres}
+À l'exception des remerciements et des notations, chaque chapitre a son dossier.
+Ce n'est pas nécessaire, mais c'est plus facile pour s'y retrouver après, et dans chaque dossier il y a le fichier principal, et il peut y avoir d'autres fichiers ou dossiers (par exemple un dossier \mytt{img/}).
 
-  Les chapitres sont ajoutés au document principal à l'aide des macros \verb|\input| ou \verb|\import|. À noter que la macro \verb|\include| ajoute forcément une nouvelle page et ne permet pas des inclusions en cascade, son utilisation est à éviter.
+Les chapitres sont ajoutés au document principal à l'aide des macros \verb|\input| ou \verb|\import|. À noter que la macro \verb|\include| ajoute forcément une nouvelle page et ne permet pas des inclusions en cascade, son utilisation est à éviter.
 
-  \subsection{Les paquets}
-  Les ajouts de paquets sont dans le fichier \mytt{mesmacros.sty}. Vous pouvez supprimer ou ajouter dans ce fichier d'autres paquets.
+Il existe plusieurs façons de créer des chapitres :
+\begin{itemize}
+  \item \verb|\chapter{Introduction}| crée un chapitre numéroté ;
+  \item \verb|\chapter*{Titre}| crée un chapitre sans numérotation qui n'apparaitra pas dans le sommaire ;
+  \item \verb|\Chapter{Notations}| crée un chapitre sans numérotation qui apparaitra dans le sommaire.
+\end{itemize}
 
-  Ce fichier utilise les fichiers suivant :
-  \begin{itemize}
-    \item \mytt{francisation.sty} dans lequel se trouvent les traductions des différents noms de section ou listes ;
-    \item \mytt{couleurs.sty} dans lequel se trouvent des couleurs, et dans lequel vous pouvez ajouter des couleurs ;
-    \item \mytt{theoremNames.sty} dans lequel se trouvent les définitions de théorèmes ;
-    \item \mytt{theoremList.sty} dans lequel se trouve le code pour générer des listes de théorèmes, utilisé pour générer la liste des définitions et la liste des exemples à la fin de ce document ;
-    \item \mytt{algo.sty} pour les algorithmes en français avec le package \mytt{algorithmic} et \mytt{colorationSyntaxique.sty} pour la coloration syntaxique des algorithmes avec le package \mytt{lstlistings}.
-  \end{itemize}
+\begin{remark}
+  La numérotation des sections et théorèmes dépend de celle du chapitre. Un chapitre sans numérotation ne devrait pas contenir de sections numérotées ni de théorèmes, sinon il risque d'y avoir des problèmes de numérotation.
+\end{remark}
 
-  \subsection{PDF/A}
+\begin{remark}
+  Par défaut, une section est numérotée ainsi :\\\verb|\renewcommand\thesection{\thechapter.\arabic{section}}|\\La numérotation des théorèmes dépend des sections et donc dépend des chapitres comme celles-ci. Ce système permet d'avoir des numéros de sections et de théorèmes uniques dans tout le document. En effet, il n'existe qu'une seule section \ref{sec:orga}, c'est la première section du premier chapitre. Si vous voulez changer le système de numérotation pour que le chapitre n'apparaisse plus, vous le pouvez avec la commande :\\\verb|\renewcommand\thesection{\arabic{section}}|\\Dans ce cas, la numérotation ne sera plus unique. Il faudra donc préciser dans quel chapitre se trouve la section à laquelle vous faites référence (la section 1 du chapitre 1). De même, les théorèmes n'auront plus de numéro unique, il faudra préciser le chapitre dans lequel il se trouve (la définition 2.1 du chapitre 2). Et donc, dans la liste des définitions, il pourra y avoir plusieurs définitions avec le même numéro, ce qui ne semble pas être une bonne pratique.
+\end{remark}
 
-  Le document est désormais compilé pour êre compatible avec la norme PDF/A-3B. 
-  Les modifications effectuées ont été faites à partir des instructions trouvées ici : \url{https://www.mathstat.dal.ca/~selinger/pdfa/}.
+Au début de chaque chapitre, vous pouvez inclure différents éléments à l'aide des commandes suivantes :
 
-  Si cela ne vous convient pas vous pouvez commenter ou modifier les lignes 82 du fichier \mytt{mesmacros.sty} :
+\begin{itemize}
+  \item \verb|\chapres{1er résumé}{2e résumé}| ajoute les 2 résumés passés en paramètres suivis de la table des matières, cette commande est utilisée pour le chapitre \ref{chap:patisserie} ;
+  \item \verb|\chapintro{un seul résumé}| ajoute le résumé passé en paramètre suivi de la table des matières, cette commande est utilisée pour le chapitre \ref{chap:macarons} ;
+  \item \verb|\chaptoc| ajoute la table des matières, cette commande est utilisée pour le chapitre \ref{chap:chap4}.
+\end{itemize}
 
-  \begin{framed}\vspace{-0.75em}
-    \begin{verbatim}
+\subsection{Les paquets}
+Les ajouts de paquets sont dans le fichier \mytt{mesmacros.sty}. Vous pouvez supprimer ou ajouter dans ce fichier d'autres paquets.
+
+Ce fichier utilise les fichiers suivant :
+\begin{itemize}
+  \item \mytt{francisation.sty} dans lequel se trouvent les traductions des différents noms de section ou listes ;
+  \item \mytt{couleurs.sty} dans lequel se trouvent des couleurs, et dans lequel vous pouvez ajouter des couleurs ;
+  \item \mytt{theoremNames.sty} dans lequel se trouvent les définitions de théorèmes ;
+  \item \mytt{theoremList.sty} dans lequel se trouve le code pour générer des listes de théorèmes, utilisé pour générer la liste des définitions et la liste des exemples à la fin de ce document ;
+  \item \mytt{algo.sty} pour les algorithmes en français avec le package \mytt{algorithmic} et \mytt{colorationSyntaxique.sty} pour la coloration syntaxique des algorithmes avec le package \mytt{lstlistings}.
+\end{itemize}
+
+\subsection{PDF/A}
+
+Le document est désormais compilé pour être compatible avec la norme PDF/A-3B.
+Les modifications effectuées ont été faites à partir des instructions trouvées ici : \url{https://www.mathstat.dal.ca/~selinger/pdfa/}.
+
+Si cela ne vous convient pas, vous pouvez commenter ou modifier les lignes 89 et 90 du fichier \mytt{mesmacros.sty} :
+
+\begin{framed}\vspace{-0.75em}
+  \begin{verbatim}
 \usepackage[a-3b]{pdfx}\end{verbatim}\vspace{-0.75em}
-  \end{framed}
+\end{framed}
 
-  Si vous voulez conserver cette norme veillez à modifier les informations contenues dans le fichier \mytt{sommaire.xmpdata}.
+Si vous voulez conserver cette norme, veillez à modifier les informations contenues dans le fichier \mytt{sommaire.xmpdata}.
 
 \section{Citations}
 
@@ -72,7 +95,7 @@ Dans ce document il y a 3 bibliographies :
 Elles sont définies au début du fichier \mytt{sommaire.tex}.
 
 \begin{framed}\vspace{-0.75em}
-\begin{verbatim}
+  \begin{verbatim}
 % Biblio pour les pages webs
 \newcites{web}{Pages web}
 % Biblio pour mes publications
@@ -89,35 +112,36 @@ Pour changer de style de la bibliographie, vous devrez probablement supprimer le
 \paragraph{Les publications dans la bibliographie générale} doivent être citées avec la macro \mytt{\textbackslash cite\{key\}}.
 
 \begin{framed}
-\noindent\cite{T2012}\vspace{-0.75em}
-\begin{verbatim}\cite{T2012}\end{verbatim}\vspace{-0.75em}
+  \noindent\cite{T2012}\vspace{-0.75em}
+  \begin{verbatim}\cite{T2012}\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
 \paragraph{Les publications pour la section pages web} doivent être citées avec la macro \mytt{\textbackslash citeweb\{key\}}.
 
 \begin{framed}
-\noindent\citeweb{AC9} \vspace{-0.75em}
-\begin{verbatim}\citeweb{AC9}\end{verbatim}\vspace{-0.75em}
+  \noindent\citeweb{AC9} \vspace{-0.75em}
+  \begin{verbatim}\citeweb{AC9}\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
 \paragraph{Les publications pour la section correspondant à vos publications} doivent être citées avec la macro \mytt{\textbackslash citemine\{key\}}.
 
 \begin{framed}
-\noindent\citemine{DHHS2011} \vspace{-0.75em}
-\begin{verbatim}\citemine{DHHS2011}\end{verbatim}\vspace{-0.75em}
+  \noindent\citemine{DHHS2011} \vspace{-0.75em}
+  \begin{verbatim}\citemine{DHHS2011}\end{verbatim}\vspace{-0.75em}
 \end{framed}
 
 Pour référencer vos publications par la suite, vous pouvez utiliser la macro \mytt{\textbackslash cite} ou la macro \mytt{\textbackslash citemine}.
-Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscript vous pouvez soit la citer avec \mytt{\textbackslash cite} ou l'insérer avec \mytt{\textbackslash nocite}. \nocite{DHHS2011}
+Si vous souhaitez que votre publication apparaisse dans la bibliographie générale à la fin du manuscrit vous pouvez soit la citer avec \mytt{\textbackslash cite} ou l'insérer avec \mytt{\textbackslash nocite}. \nocite{DHHS2011}
 
-Attention si vous utilisez un style de bibliographie numérotant les références, vous aurez des problèmes de numérotation si une publication est à la fois citée en utilisant la macro \mytt{\textbackslash cite} et la macro \mytt{\textbackslash citemine}.
-
+\begin{remark}
+  Si vous utilisez un style de bibliographie numérotant les références, vous aurez des problèmes de numérotation si une publication est à la fois citée en utilisant la macro \mytt{\textbackslash cite} et la macro \mytt{\textbackslash citemine}.
+\end{remark}
 
 
 Chaque bibliographie peut ensuite être affichée en utilisant les lignes suivantes :
 
 \begin{framed}\vspace{-0.75em}
-\begin{verbatim}\bibliographystyle<s>{apacite}
+  \begin{verbatim}\bibliographystyle<s>{apacite}
 \bibliography<s>{biblio}
 \end{verbatim}\vspace{-0.75em}
 \end{framed}
@@ -127,14 +151,14 @@ où \verb|<s>| correspond à la bibliographie que l'on veut afficher.
 Pour redéfinir l'affichage, il suffit de redéfinir le \verb|\bibtitle|, pour que ce soit un chapitre utilisez la commande suivante :
 
 \begin{framed}\vspace{-0.75em}
-\begin{verbatim}\renewcommand{\bibtitle}{\bibchapter}
+  \begin{verbatim}\renewcommand{\bibtitle}{\bibchapter}
 \end{verbatim}\vspace{-0.75em}
 \end{framed}
 
 Pour que ça apparaisse comme une section, utilisez la commande suivante :
 
 \begin{framed}\vspace{-0.75em}
-\begin{verbatim}\renewcommand{\bibtitle}{\section*{\refname}}
+  \begin{verbatim}\renewcommand{\bibtitle}{\section*{\refname}}
 \end{verbatim}\vspace{-0.75em}
 \end{framed}
 

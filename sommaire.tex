@@ -18,62 +18,62 @@
 
 
 \begin{document}
-  \pagenumbering{roman}
+\pagenumbering{roman}
 
-  \input{jury}
+\input{jury}
 
-  \maketitle
+\maketitle
 
-  \begin{dedicace}
-    À toi lecteur <3 :*
-  \end{dedicace}
+\begin{dedicace}
+  À toi lecteur <3 :*
+\end{dedicace}
 
-  \cleardoublepage
+\cleardoublepage
 
-  \input{resume}
+\input{resume}
 
-  \input{remerciements}
+\input{remerciements}
 
-  \tableofcontents
+\tableofcontents
 
-  \mainmatter
+\mainmatter
 
-  \input{introduction/introduction}
-  \input{notations}
+\input{introduction/introduction}
+\input{notations}
 
-  \Part{État de l'art}
-  \import{chapitre2/}{chapitre2}
-  \import{chapitre3/}{chapitre3}
+\Part{État de l'art}
+\import{chapitre2/}{chapitre2}
+\import{chapitre3/}{chapitre3}
 
-  \Part{Contributions}
-  \import{chapitre4/}{chapitre4}
-  \import{chapitre5/}{chapitre5}
+\Part{Contributions}
+\import{chapitre4/}{chapitre4}
+\import{chapitre5/}{chapitre5}
 
-  \input{conclusion/conclusion}
+\input{conclusion/conclusion}
 
-  \backmatter
+\backmatter
 
-  \renewcommand{\bibtitle}{\bibchapter}
-  \bibliographystyle{apacite}
-  \bibliography{biblio}
+\renewcommand{\bibtitle}{\bibchapter}
+\bibliographystyle{apacite}
+\bibliography{biblio}
 
-  \renewcommand{\bibtitle}{\section*{\refname}}
-  \bibliographystyleweb{apacite}
-  \bibliographyweb{biblio}
+\renewcommand{\bibtitle}{\section*{\refname}}
+\bibliographystyleweb{apacite}
+\bibliographyweb{biblio}
 
-  \listoffigures
-%. \listoftables
+\listoffigures
+% \listoftables
 
-  \renewcommand{\listtheoremname}{Liste des définitions}
-  \listoftheorems[ignoreall,show={definition}]
+\renewcommand{\listtheoremname}{Liste des définitions}
+\listoftheorems[ignoreall,show={definition}]
 
-  \renewcommand{\listtheoremname}{Liste des exemples}
-  \listoftheorems[ignoreall,show={example}]
+\renewcommand{\listtheoremname}{Liste des exemples}
+\listoftheorems[ignoreall,show={example}]
 
-  \listofalgorithms
+\listofalgorithms
 
 
-  \appendix
-  \input{annexe/annexe}
+\appendix
+\input{annexe/annexe}
 
 \end{document}

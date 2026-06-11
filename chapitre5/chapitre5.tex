@@ -40,11 +40,11 @@
 
 \begin{figure}
   \centering
-    
-  \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}] 
+
+  \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
     \input{img/graphe}
   \end{tikzpicture}
-    
+
   \caption{Graphe de départ}
   \label{fig:graphe}
 \end{figure}
@@ -55,64 +55,65 @@ La figure \ref{fig:graphe} est vraiment magnifique.
 \section{Section 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \begin{figure}
-    \centering
-    
-    \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
-      % redéfinitions des nœuds en rose
-      \tikzset{n1/.style = nrose}
-      \tikzset{n9/.style = nrose}
-      
-      % et en rectangle
-      \tikzset{n2/.style = {rectangle, pink}}
-      
-      % redéfinitions de nœuds bleus
-      \tikzset{n6/.style = nbleu}
-      
-      % redéfinitions des arêtes
-      \tikzset{a12/.style = {->, vert, thick}}
-      \tikzset{a25/.style = {-), vert, thick}}
-      \tikzset{a56/.style = {-], vert, thick}}
-      \tikzset{a67/.style = {(-], vert, thick}}
-      \tikzset{a79/.style = {o-[, vert, thick}}
-      
-      \tikzset{a13/.style = {red, dashed, thick}}
-      
-      \input{img/graphe}      
-    \end{tikzpicture}
-    
-    \caption{Graphe avec des nœuds en rose et d'autres en bleu}
+\begin{figure}
+  \centering
+
+  \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
+    % redéfinitions des nœuds en rose
+    \tikzset{n1/.style = nrose}
+    \tikzset{n9/.style = nrose}
+
+    % et en rectangle
+    \tikzset{n2/.style = {rectangle, pink}}
+
+    % redéfinitions de nœuds bleus
+    \tikzset{n6/.style = nbleu}
+
+    % redéfinitions des arêtes
+    \tikzset{a12/.style = {->, vert, thick}}
+    \tikzset{a25/.style = {-), vert, thick}}
+    \tikzset{a56/.style = {-], vert, thick}}
+    \tikzset{a67/.style = {(-], vert, thick}}
+    \tikzset{a79/.style = {o-[, vert, thick}}
+    \tikzset{a34/.style = {opacity = 0}}
+
+    \tikzset{a13/.style = {red, dashed, thick}}
+
+    \input{img/graphe}
+  \end{tikzpicture}
+
+  \caption{Graphe avec des nœuds en rose et d'autres en bleu}
   \label{fig:grapherb}
-  \end{figure}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Section 3}
 
-  \begin{figure}
-    \centering
-    
-    \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
-      \input{img/graphe}
-      
-      \tikzset{every node/.style = {}} % on ne veut plus de cercle autour des nœuds
-      \node[red] () at ($(1) !.5! (2)$) {toto}; % directement au milieu
-      
-      \node[bleu, right] () at ($(4) !.35! (6)$) {tata}; % à droite, à 0.35 de (4)
-      
-      \tikzset{every path/.style = {}} % on ne veut plus dessiner les chemins
-      \path (7) -- (9) node [midway, above, sloped, vert] () {titi};
-      
-      \path (8) -- (9) node [midway, below, sloped, pink] (ici) {ici};
-      
-      \node[right = 0.5cm, pink] (regardez) at (9 |- 8) {Regardez};  % le nœud se trouve à 0.5cm à droite du point ayant la même abscisse que (9) et la même ordonnée que (8);
-      
-      \draw[->, pink, very thick] (regardez) -- (ici);
+\begin{figure}
+  \centering
 
-    \end{tikzpicture}
-    
-    \caption{Graphe de départ avec une étiquette sur certaines arêtes}
+  \begin{tikzpicture}[every node/.style = {nodedefault}, every path/.style = {edgedefault}]
+    \input{img/graphe}
+
+    \tikzset{every node/.style = {}} % on ne veut plus de cercle autour des nœuds
+    \node[red] () at ($(1) !.5! (2)$) {toto}; % directement au milieu (50% de la distance entre (1) et (2)).
+
+    \node[bleu, right] () at ($(4) !.35! (6)$) {tata}; % à droite, à 35% de (4)
+
+    \tikzset{every path/.style = {}} % on ne veut plus dessiner les chemins
+    \path (7) -- (9) node [midway, above, sloped, vert] () {titi};
+
+    \path (8) -- (9) node [midway, below, sloped, pink] (ici) {ici};
+
+    \node[right = 0.5cm, pink] (regardez) at (9 |- 8) {Regardez};  % le nœud se trouve à 0.5cm à droite du point ayant la même abscisse que (9) et la même ordonnée que (8);
+
+    \draw[->, pink, very thick] (regardez) -- (ici);
+
+  \end{tikzpicture}
+
+  \caption{Graphe de départ avec une étiquette sur certaines arêtes}
   \label{fig:grapheetiq}
-  \end{figure}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
