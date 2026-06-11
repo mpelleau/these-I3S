@@ -1,5 +1,3 @@
-\usepackage{subfigure}
-
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -75,7 +73,12 @@
 \clubpenalty=10000
 \raggedbottom
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Coloration des liens
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \PassOptionsToPackage{bookmarks = true, bookmarksnumbered = true, breaklinks = true, colorlinks = true, citecolor = citeColor, linkcolor = linkColor}{hyperref}
+\usepackage{bookmark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PDF/A generation
@@ -83,12 +86,6 @@
 
 \usepackage[a-3b]{pdfx}
 \usepackage{xmpincl}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Coloration des liens
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tables des matières à chaque chapitre

@@ -10,9 +10,9 @@
 
 \begin{figure}
   \centering
-  \subfigure[subfigure 1]{
+  \begin{subfigure}{0.25\textwidth}
     \begin{tikzpicture}[scale = 1.5]
-      \fill [black] (-1.25, -1.25) rectangle (1.25, 1.25); 
+      \fill [black] (-1.25, -1.25) rectangle (1.25, 1.25);
       \begin{scope}
         \clip (-1, -1) rectangle (0, 0);
         \fill[purple] (0,0) circle (1);
@@ -30,9 +30,11 @@
         \fill[vert] (0,0) circle (1);
       \end{scope}
     \end{tikzpicture}
+    \caption{subfigure 1}
     \label{fig:subfig1}
-    }
-  \subfigure[subfigure 2]{
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.2\textwidth}
     \begin{tikzpicture}[scale = 1.5]
       \draw[brown] (0, 0) -- (0.5, 0.5) -- (0.5, 1) -- (0.75, 1) -- (0.75, 0.75) -- (1, 1) -- (2, 0) -- cycle;
       \draw[brown] (0, 0) -- (0, -1.5) -- (2, -1.5) --  (2, 0);
@@ -42,16 +44,21 @@
       \draw[color = green!60!black] (1.5, -0.65) -- (1.5, -0.15);
       \filldraw[color = green!60!black, fill opacity = 0.5] (0.75, -1.5) rectangle (1.25, -0.8);
     \end{tikzpicture}
+    \caption{subfigure 2}
     \label{fig:subfig2}
-    }
-  \subfigure[subfigure 3]{
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.25\textwidth}
     \includegraphics[scale = 0.25]{Pastry_Bag.png}
+    \caption{subfigure 3}
     \label{fig:subfig3}
-    }
-  \subfigure[subfigure 4]{
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.24\textwidth}
     \includegraphics[scale = 0.2]{img/macaron.png}
+    \caption{subfigure 4}
     \label{fig:subfig4}
-    }
+  \end{subfigure}
   \caption[Dessins]{Dessin avec des sous-figures.}
   \label{fig:figure1}
 \end{figure}
@@ -70,12 +77,12 @@ La figure \ref{fig:figure1} est vraiment magnifique. Elle est composée des sous
     \STATE
     \STATE $m \leftarrow$ tab[1]
     \FOR{$i$ \FROM 2 \TO length(tab)}
-      \IF{$m <$ tab[$i$]}
-        \STATE $m \leftarrow$ tab[$i$]
-      \ENDIF
-      \STATE
-      \STATE \PRINT "Le maximum est " + $m$
-      \RETURN $m$
+    \IF{$m <$ tab[$i$]}
+    \STATE $m \leftarrow$ tab[$i$]
+    \ENDIF
+    \STATE
+    \STATE \PRINT "Le maximum est " + $m$
+    \RETURN $m$
     \ENDFOR
   \end{algorithmic}
   \caption[Algorithme 1 (nom dans la liste des algorithmes)]{Met dans $m$ la valeur maximale du tableau tab.\label{ag:algo1}}
@@ -85,60 +92,60 @@ L'algorithme \ref{ag:algo1} utilise le package \texttt{algorithmic} dont la fran
 
 \begin{algorithm}
   \begin{CProg}
-int max(int* tab, int n) {
-  int i; // indice de parcours
-  int m; // valeur maximale du tableau
-  
-  m = tab[0];
-  for (i = 1; i < n; i++) {
-    if (m < tab[i]) {
-      m = tab[i];
-    }
-  }
-  
-  printf("Le maximum est %d", m),
-  return m;
-}
+    int max(int* tab, int n) {
+        int i; // indice de parcours
+        int m; // valeur maximale du tableau
+
+        m = tab[0];
+        for (i = 1; i < n; i++) {
+            if (m < tab[i]) {
+                m = tab[i];
+              }
+          }
+
+        printf("Le maximum est %d", m),
+        return m;
+      }
   \end{CProg}
   \caption[Algo en C]{Retourne la valeur maximale du tableau tab.\label{ag:algoc}}
 \end{algorithm}
 
 \begin{algorithm}
   \begin{PseudoCode}
-max(tableau d'entiers tab, entier n) {
-  entier i // indice de parcours
-  entier m // valeur maximale du tableau
-  
-  m <- tab[1]
-  for i from 2 to n {
-    if (m < tab[i]) {
-      m <- tab[i]
-    }
-  }
-  
-  print("Le maximum est ", m),
-  return m;
-}
+    max(tableau d'entiers tab, entier n) {
+        entier i // indice de parcours
+        entier m // valeur maximale du tableau
+
+        m <- tab[1]
+        for i from 2 to n {
+            if (m < tab[i]) {
+                m <- tab[i]
+              }
+          }
+
+        print("Le maximum est ", m),
+        return m;
+      }
   \end{PseudoCode}
   \caption[Algo en PseudoCode]{Retourne la valeur maximale du tableau tab.\label{ag:algop}}
 \end{algorithm}
 
 \begin{algorithm}
   \begin{Java}
-int max(int[] tab, int n) {
-  int i; // indice de parcours
-  int m; // valeur maximale du tableau
-  
-  m = tab[0];
-  for (i = 1; i < n; i++) {
-    if (m < tab[i]) {
-      m = tab[i];
-    }
-  }
-  
-  System.out.println("Le maximum est " + m),
-  return m;
-}
+    int max(int[] tab, int n) {
+        int i; // indice de parcours
+        int m; // valeur maximale du tableau
+
+        m = tab[0];
+        for (i = 1; i < n; i++) {
+            if (m < tab[i]) {
+                m = tab[i];
+              }
+          }
+
+        System.out.println("Le maximum est " + m),
+        return m;
+      }
   \end{Java}
   \caption[Algo en Java]{Retourne la valeur maximale du tableau tab.\label{ag:algoj}}
 \end{algorithm}
