@@ -171,13 +171,10 @@ Des exemples d'utilisation des différents paquets sont présents dans ce docume
 Des citations pour compléter les bibliographies \citemine{HHSD2011,HHSD2012}, \citeweb{AC9}.
 
 
-Des citations pour compléter les bibliographies \citeA{HHSD2011}.
+Des citations pour compléter les bibliographies \cite{HHSD2011}.
 
-\citeAweb{AC9}.
+\citeweb{AC9}.
 
 Une référence citée avec \mytt{\textbackslash citemine} \citemine{DHHS2011} et \mytt{\textbackslash cite} \cite{DHHS2011} pour voir.
 
-
-\renewcommand{\bibtitle}{\section*{\refname}}
-\bibliographystylemine{apacite}
-\bibliographymine{biblio}
+\printbibliography[category=mine, heading=minestyle]

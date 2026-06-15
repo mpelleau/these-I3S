@@ -1,56 +1,7 @@
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{calc}
-\usepackage[hyphens]{url}
 
-\usepackage{pgf, tikz} % Pour de jolis dessins
-\usetikzlibrary{shapes}
-\usetikzlibrary{positioning}
-\usetikzlibrary{calc}
-\usetikzlibrary{arrows}
-\usetikzlibrary{decorations.text}
-
-\usepackage{xspace} % Pour gérer les espacements
-\usepackage[french,draft]{varioref}
-
-\usepackage{subcaption}
-
-\usepackage{theoremNames} % Définition des théorèmes et de leur noms
-
-\usepackage{francisation} % Traduction des noms de listes, de sections, chapitres....  
-\usepackage{theoremList} % Macro pour effectuer des listes de théorèmes
-
-\usepackage{couleurs} % Définitions de couleurs pour ce manuscript
-
-
-\usepackage[plain, chapter]{algorithm}
-\usepackage{algo} % Pour l'utilisation du package algorithmic avec les termes en français
-\usepackage{colorationSyntaxique} % Pour l'utilisation du package lstlistings
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Pour l'entête des pages  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{framed}
-\usepackage{fancyvrb}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-
-% Pour que l'entête choisi ne soit pas en majuscules
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{#1}}
-
-
-\fancyhead[LE,RO]{\textbf{\thepage}} % Sur les pages paires à gauche (LE) et sur les pages impaires à droite (RO) on met le numéro de page
-\fancyhead[LO]{\textsl{\rightmark}} % Sur les pages impaires à gauche (LO), on met la section courante (4.3 -- Section 1)
-\fancyhead[RE]{\textsl{\leftmark}} % Sur les pages paire à droite (RE), on met le chapitre courant (CHAPITRE 2 -- La Pâtisserie)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Macros customisées  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros customisées 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\eg}{\textit{e.g.,\xspace}}
 \newcommand{\wrt}{w.r.t.\xspace}
@@ -60,39 +11,10 @@
 \def\mB#1{\ensuremath{\mathbb{#1}}}
 \def\mC#1{\ensuremath{\mathcal{#1}}}
 
-\newcommand{\eme}{\ensuremath{^{\grave{e}me}}}
-\newcommand{\ere}{\ensuremath{^{\acute{e}re}}}
+\newcommand{\eme}{\ensuremath{^{e}}}
+\newcommand{\ere}{\ensuremath{^{re}}}
 \newcommand{\er}{\ensuremath{^{er}}}
 
 \def\ojo#1{{\color{alert}#1}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\widowpenalty=10000
-\clubpenalty=10000
-\raggedbottom
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Coloration des liens
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\PassOptionsToPackage{bookmarks = true, bookmarksnumbered = true, breaklinks = true, colorlinks = true, citecolor = citeColor, linkcolor = linkColor}{hyperref}
-\usepackage{bookmark}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PDF/A generation
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage[a-3b]{pdfx}
-\usepackage{xmpincl}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tables des matières à chaque chapitre
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{minitoc}
-\dominitoc[n]
-% \dominilof % décommenter pour avoir des listes de figures à chaque chapitre
-% \dominilot % décommenter pour avoir des listes de tables à chaque chapitre
-\setcounter{minitocdepth}{3}
-\renewcommand{\mtctitle}{Sommaire}
+\def\mytt#1{\small\texttt{#1}}

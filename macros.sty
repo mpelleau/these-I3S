@@ -1,0 +1,121 @@
+\selectlanguage{french}
+
+\usepackage{graphicx}
+\graphicspath{{images/}{img/}{fig/}}
+\usepackage{amsthm}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyvrb}
+\usepackage{fancybox}
+\usepackage{lastpage}
+
+\input{titreEtInfos}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{calc}
+% \usepackage[hyphens]{url}
+
+\usepackage{pgf, tikz} % Pour de jolis dessins
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.text}
+
+\usepackage{xspace} % Pour gérer les espacements
+\usepackage[french,draft]{varioref}
+
+\usepackage{subcaption}
+
+\usepackage{theoremNames} % Définition des théorèmes et de leur noms
+
+\usepackage{francisation} % Traduction des noms de listes, de sections, chapitres....  
+\usepackage{theoremList} % Macro pour effectuer des listes de théorèmes
+
+\usepackage{couleurs} % Définitions de couleurs pour ce manuscript
+
+
+\usepackage[plain, chapter]{algorithm}
+\usepackage{algo} % Pour l'utilisation du package algorithmic avec les termes en français
+\usepackage{colorationSyntaxique} % Pour l'utilisation du package lstlistings
+
+\usepackage{framed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF/A generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a-3b]{pdfx}
+\usepackage{xmpincl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Coloration des liens
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+  bookmarksnumbered = true,
+  breaklinks = true,
+  colorlinks = true,
+  citecolor = citeColor,
+  linkcolor = linkColor,
+  urlcolor = urlcolor
+}
+\usepackage{bookmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tables des matières 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setsecnumdepth{subsection} % On numérote jusqu'à subsection, en d'autres termes subsubsection, paragraph et subparagraph ne seront pas numérotés
+\maxsecnumdepth{subsubsection}
+
+\setcounter{tocdepth}{2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tables des matières à chaque chapitre
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{mtcpatchmem}
+\usepackage{minitoc}
+\dominitoc[n]
+% \dominilof % décommenter pour avoir des listes de figures à chaque chapitre
+% \dominilot % décommenter pour avoir des listes de tables à chaque chapitre
+\setcounter{minitocdepth}{3}
+\renewcommand{\mtctitle}{Sommaire}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{csquotes}
+\usepackage[style=apa]{biblatex}
+
+\addbibresource{biblio.bib}
+
+\DeclareBibliographyCategory{mine}
+\DeclareBibliographyCategory{web}
+\def\citeweb#1{
+  \cite{#1}
+  \addtocategory{web}{#1}
+}
+\def\citemine#1{
+  \cite{#1}
+  \addtocategory{mine}{#1}
+}
+
+\defbibheading{minestyle}[Mes publications]{%
+  \section*{#1}%
+  \markright{#1}}
+
+\defbibheading{webstyle}[Pages web]{%
+  \section*{#1}%
+  \markright{#1}}
+

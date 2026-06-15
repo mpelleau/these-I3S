@@ -1,24 +1,18 @@
-\documentclass{these-ISSS} % Pour la version finale
-%\documentclass[draft]{these-ISSS} % Pour une version brouillon
-%\documentclass[gray]{these-ISSS} % Pour une version en grayscale
+\documentclass[nobibintoc]{these-ISSS}
 
+\usepackage{macros}
 \usepackage{mesmacros}
 \usepackage{import}
-\usepackage{apacite}
+% \usepackage{apacite}
 \usepackage{lipsum}
 
-% Biblio pour les pages webs
-\newcites{web}{Pages web}
-% Biblio pour mes publications
-\newcites{mine}{Mes publications}
-
-\def\mytt#1{\small\texttt{#1}}
-
-\input{titreEtInfos}
+\defaultstyle
+% \ctstyle
 
 
 \begin{document}
-\pagenumbering{roman}
+
+\frontmatter
 
 \input{jury}
 
@@ -30,50 +24,55 @@
 
 \cleardoublepage
 
-\input{resume}
-
 \input{remerciements}
 
-\tableofcontents
+\clearforchapter
+
+\tableofcontents*
 
 \mainmatter
 
 \input{introduction/introduction}
+
 \input{notations}
 
 \Part{État de l'art}
-\import{chapitre2/}{chapitre2}
-\import{chapitre3/}{chapitre3}
+\import{patisserie/}{main}
+\import{macaron/}{main}
 
 \Part{Contributions}
-\import{chapitre4/}{chapitre4}
-\import{chapitre5/}{chapitre5}
+\import{chapitre4/}{main}
+\import{chapitre5/}{main}
 
 \input{conclusion/conclusion}
 
-\backmatter
+\printbibliography[notcategory=mine,notcategory=web]
 
-\renewcommand{\bibtitle}{\bibchapter}
-\bibliographystyle{apacite}
-\bibliography{biblio}
+\printbibliography[category=web, heading=webstyle]
 
-\renewcommand{\bibtitle}{\section*{\refname}}
-\bibliographystyleweb{apacite}
-\bibliographyweb{biblio}
-
+\clearforchapter
 \listoffigures
+
+% \clearforchapter
 % \listoftables
 
+\clearforchapter
 \renewcommand{\listtheoremname}{Liste des définitions}
 \listoftheorems[ignoreall,show={definition}]
 
+\clearforchapter
 \renewcommand{\listtheoremname}{Liste des exemples}
 \listoftheorems[ignoreall,show={example}]
 
+\clearforchapter
 \listofalgorithms
 
 
 \appendix
 \input{annexe/annexe}
+
+\backmatter
+
+\input{resume}
 
 \end{document}
