@@ -5,6 +5,10 @@
 
 \makeatletter
 
+\renewcommand\thmt@autorefsetup{%
+  \@xa\def\csname\thmt@envname autorefname\@xa\endcsname\@xa{\thmt@thmname}%
+}
+
 \renewcommand\thmt@mklistcmd{
   \@xa\protected@edef\csname l@\thmt@envname\endcsname{
     \@nx\@dottedtocline{1}{1.5em}{\@nx\thmt@listnumwidth}
