@@ -7,4 +7,4 @@ all:
 	pdflatex sommaire
 
 clean:
-	rm -f *.aux *.bbl *.lbl *.loa *.loe *.lof *.log *.maf *.mlf* *.mlt* *.mtc* *.toc *.blg
+	rm -f *.aux *.bbl *.lbl *.loa *.loe *.lof *.log *.maf *.mlf* *.mlt* *.mtc* *.toc *.blg *.bcf *.fdb_latexmk *.synctex.gz *.fls

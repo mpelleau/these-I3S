@@ -50,20 +50,7 @@
   \PassOptionsToClass{\CurrentOption}{memoir}%
 }
 
-% \DeclareOption{revision}{\@revisiontrue}
-% \makeatletter
-% \newcommand\addRevisionData{%
-%   \begin{picture}(0,0)%
-%     \put(0,-20){%
-%       \tiny%
-%       \expandafter\@ifmtarg\expandafter{\svnfiledate}{}{%
-%         \textit{\textcolor{darkgray}{Chapter last updated \svnfileyear/\svnfilemonth/\svnfileday
-%             \enspace (revision \svnfilerev)}}
-%       }%
-%     }%
-%   \end{picture}%
-% }
-% \makeatother
+\DeclareOption{revision}{\@revisiontrue}
 
 % % we add this to the first page of each chapter
 
@@ -391,6 +378,10 @@
     \raggedleft \chaptitlefont\textbf{##1}\par}
   \renewcommand*{\afterchaptertitle}{\vskip\afterchapskip}
   \renewcommand*{\printchapternonum}{}
+  \if@revision
+    \makeoddfoot{plain}{\textbf{\jobname.tex}~--~{%
+    \@titre}~--~\number\day/\number\month/  \number\year~--~\timenow}{}{\thepage}
+  \fi
 }
 
 
